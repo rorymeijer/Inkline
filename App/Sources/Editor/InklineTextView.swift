@@ -43,7 +43,11 @@ final class InklineTextView: NSTextView {
 
     private var indentEngine = IndentationEngine(settings: .default, rules: .curlyBraces)
     private var bracketMatchRanges: [NSRange] = []
-    private var lineIndexProvider: ((Int) -> Int)?
+
+    /// How much text around the caret the bracket matcher looks at. Matching
+    /// across a whole 100 MB document on every caret move would be absurd; a
+    /// window of this size covers any realistic block.
+    private static let bracketMatchWindow = 20_000
 
     // MARK: Setup
 
@@ -73,10 +77,6 @@ final class InklineTextView: NSTextView {
         textContainerInset = NSSize(width: 4, height: 6)
         setAccessibilityLabel(NSLocalizedString("Teksteditor", comment: "VoiceOver-label van het tekstveld"))
         applyStyle()
-    }
-
-    func setLineIndexProvider(_ provider: @escaping (Int) -> Int) {
-        lineIndexProvider = provider
     }
 
     private func applyStyle() {
@@ -238,17 +238,25 @@ final class InklineTextView: NSTextView {
         bracketMatchRanges = []
         defer { needsDisplay = true }
         guard settings.highlightsMatchingBracket, selectedRange().length == 0 else { return }
-        let text = string
-        guard !text.isEmpty else { return }
 
-        let table = PieceTable(text)
-        guard let match = BracketMatcher.match(at: selectedRange().location,
+        let characters = string as NSString
+        guard characters.length > 0 else { return }
+
+        // Work on a window around the caret and translate the result back.
+        let caret = min(selectedRange().location, characters.length)
+        let windowStart = max(0, caret - Self.bracketMatchWindow)
+        let windowEnd = min(characters.length, caret + Self.bracketMatchWindow)
+        let window = characters.substring(with: NSRange(location: windowStart,
+                                                        length: windowEnd - windowStart))
+
+        let table = PieceTable(window)
+        guard let match = BracketMatcher.match(at: caret - windowStart,
                                                in: table,
                                                pairs: language.bracketPairs.isEmpty
                                                    ? BracketMatcher.defaultPairs
                                                    : language.bracketPairs) else { return }
-        bracketMatchRanges = [NSRange(location: match.origin, length: 1),
-                              NSRange(location: match.counterpart, length: 1)]
+        bracketMatchRanges = [NSRange(location: windowStart + match.origin, length: 1),
+                              NSRange(location: windowStart + match.counterpart, length: 1)]
     }
 
     // MARK: Multiple carets
@@ -257,9 +265,7 @@ final class InklineTextView: NSTextView {
         // Cmd-click adds a caret, the way every modern editor does it.
         if event.modifierFlags.contains(.command), !event.modifierFlags.contains(.shift) {
             let point = convert(event.locationInWindow, from: nil)
-            let index = characterIndexForInsertion(at: NSPoint(x: point.x - textContainerInset.width,
-                                                               y: point.y - textContainerInset.height))
-            addCaret(at: index)
+            addCaret(at: characterIndexForInsertion(at: point))
             return
         }
         clearAdditionalCarets()
@@ -358,8 +364,10 @@ final class InklineTextView: NSTextView {
         return language.autoClosePairs.first { $0.open == text }?.close
     }
 
-    /// Typing the closing half of a pair right before it just moves the caret.
+    /// Typing the closing half of a pair right before it just moves the caret —
+    /// but only when Inkline put it there, i.e. when auto-closing is on.
     private func skipOverClosingCharacter(_ text: String) -> Int? {
+        guard settings.autoClosesBrackets || settings.autoClosesQuotes else { return nil }
         guard text.count == 1, selectedRange().length == 0 else { return nil }
         let characters = string as NSString
         let location = selectedRange().location
@@ -394,7 +402,7 @@ final class InklineTextView: NSTextView {
             ? Character(text.substring(with: NSRange(location: location, length: 1)))
             : nil
 
-        if indentEngine.shouldExpandBracketPair(before: before, after: after) {
+        if selectedRange().length == 0, indentEngine.shouldExpandBracketPair(before: before, after: after) {
             // Return between { and } opens a blank indented line and pushes the
             // closing brace down one line.
             let outerIndent = IndentationEngine.leadingWhitespace(of: currentLine)

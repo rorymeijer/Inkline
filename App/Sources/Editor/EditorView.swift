@@ -48,9 +48,6 @@ struct EditorView: NSViewRepresentable {
         textView.settings = environment.settings
         textView.language = document.language
         textView.indentation = document.document.indentation
-        textView.setLineIndexProvider { [weak document] offset in
-            document?.lineNumber(at: offset) ?? 0
-        }
         textView.onSelectionChange = { [weak coordinator = context.coordinator] in
             coordinator?.selectionDidChange()
         }
@@ -126,8 +123,6 @@ struct EditorView: NSViewRepresentable {
     /// as if those lines were not there, without touching the text itself.
     private func applyFolding(to textView: InklineTextView, coordinator: Coordinator) {
         let table = document.lineIndex
-        guard table.count == document.length else { return }
-
         var ranges = [NSRange]()
         for range in document.foldingState.hiddenLines {
             guard range.lowerBound < table.lineCount else { continue }

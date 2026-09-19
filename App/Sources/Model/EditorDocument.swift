@@ -66,6 +66,7 @@ final class EditorDocument: ObservableObject, Identifiable {
         textStorage.wrapsLines = environment.settings.wrapsLines
         textStorage.setText(document.buffer.text)
 
+        lineIndex = PieceTable(document.buffer.text)
         textStorage.onEdit = { [weak self] change in
             self?.mirrorIntoBuffer(change)
         }
@@ -81,8 +82,10 @@ final class EditorDocument: ObservableObject, Identifiable {
     var length: Int { textStorage.length }
     var fileURL: URL? { document.fileURL }
 
-    /// Line index backed by the core piece table, used by the gutter and the
-    /// status bar so neither has to scan the text.
+    /// Line index backed by the core piece table, kept exactly in step with the
+    /// text by replaying every edit into it. The gutter, the status bar, the
+    /// column editor and "verplaats regel" all ask it for line boundaries
+    /// instead of scanning the text.
     private(set) var lineIndex = PieceTable("")
 
     func lineNumber(at offset: Int) -> Int {
@@ -101,6 +104,9 @@ final class EditorDocument: ObservableObject, Identifiable {
     // MARK: Mirroring
 
     private func mirrorIntoBuffer(_ change: TextChange) {
+        // The line index is updated even for edits that originate here, so it
+        // is never one keystroke behind what a command is about to act on.
+        lineIndex.replaceSubrange(change.editedRange, with: change.insertedText)
         guard !isMirroring else { return }
         isMirroring = true
         document.buffer.replace(change.editedRange, with: change.insertedText)
@@ -205,7 +211,6 @@ final class EditorDocument: ObservableObject, Identifiable {
 
             DispatchQueue.main.async {
                 guard let self else { return }
-                self.lineIndex = table
                 self.symbols = symbols
                 var folding = self.foldingState
                 folding.update(regions: regions)
@@ -281,6 +286,7 @@ final class EditorDocument: ObservableObject, Identifiable {
     private func syncBufferBeforeSaving() {
         if document.buffer.text != text {
             document.buffer.reset(to: text)
+            lineIndex = PieceTable(text)
             document.markDirty()
         }
     }

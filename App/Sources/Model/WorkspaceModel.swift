@@ -460,11 +460,11 @@ final class WorkspaceModel: ObservableObject {
 
     func goToMatchingBracket() {
         guard let document = activeDocument, let textView = activeTextView else { return }
-        let table = document.lineIndex
-        guard table.count == document.length,
-              let match = BracketMatcher.match(at: textView.selectedRange().location,
-                                               in: table,
-                                               pairs: document.language.bracketPairs) else { return }
+        guard let match = BracketMatcher.match(at: textView.selectedRange().location,
+                                               in: document.lineIndex,
+                                               pairs: document.language.bracketPairs.isEmpty
+                                                   ? BracketMatcher.defaultPairs
+                                                   : document.language.bracketPairs) else { return }
         textView.setSelectedRange(NSRange(location: match.counterpart, length: 1))
         textView.scrollRangeToVisible(textView.selectedRange())
     }

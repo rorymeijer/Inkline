@@ -194,8 +194,6 @@ extension WorkspaceModel {
     private func applyColumnInsertion(_ insertion: ColumnEditor.Insertion) {
         guard let textView = activeTextView, let document = activeDocument else { return }
         let table = document.lineIndex
-        guard table.count == document.length else { return }
-
         let selection = textView.selectedRange()
         let firstLine = document.lineNumber(at: selection.location)
         let lastLine = document.lineNumber(at: NSMaxRange(selection))
