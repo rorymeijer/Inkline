@@ -147,30 +147,35 @@ public enum TextTransforms {
             .joined(separator: separator)
     }
 
-    /// Hard-wraps every line at `column`, breaking on whitespace where possible.
+    /// Hard-wraps every line at `column`, breaking on the last whitespace at
+    /// or before the limit and falling back to a hard break for a word that is
+    /// longer than the column itself.
     public static func splitLines(_ text: String, at column: Int) -> String {
         guard column > 0 else { return text }
         let hadTrailingNewline = text.hasSuffix("\n")
         var output = [String]()
+
         for line in splitIntoLines(text) {
             var remainder = Substring(line)
-            if remainder.count <= column {
-                output.append(String(remainder))
-                continue
-            }
             while remainder.count > column {
                 let limit = remainder.index(remainder.startIndex, offsetBy: column)
-                var breakIndex = limit
-                while breakIndex > remainder.startIndex, !remainder[remainder.index(before: breakIndex)].isWhitespace {
-                    breakIndex = remainder.index(before: breakIndex)
+                var breakIndex: Substring.Index?
+                var probe = limit
+                while probe > remainder.startIndex {
+                    if remainder[probe].isWhitespace {
+                        breakIndex = probe
+                        break
+                    }
+                    probe = remainder.index(before: probe)
                 }
-                if breakIndex == remainder.startIndex { breakIndex = limit }   // no space: hard break
-                output.append(String(remainder[remainder.startIndex..<breakIndex])
-                    .trimmingCharacters(in: .whitespaces))
-                remainder = remainder[breakIndex...]
-                while let first = remainder.first, first == " " { remainder = remainder.dropFirst() }
+                let cut = breakIndex ?? limit          // no space: break mid-word
+                output.append(String(remainder[remainder.startIndex..<cut]))
+                remainder = remainder[cut...]
+                while let first = remainder.first, first == " " || first == "\t" {
+                    remainder = remainder.dropFirst()
+                }
             }
-            if !remainder.isEmpty { output.append(String(remainder)) }
+            output.append(String(remainder))
         }
         return join(output, trailingNewline: hadTrailingNewline)
     }
