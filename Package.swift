@@ -16,9 +16,13 @@ let package = Package(
         .macOS(.v13)
     ],
     products: [
-        .library(name: "InklineCore", targets: ["InklineCore"]),
-        .library(name: "InklineSyntax", targets: ["InklineSyntax"]),
-        .library(name: "InklinePluginAPI", targets: ["InklinePluginAPI"])
+        // Dynamic, so the app and the plugin bundles share one copy of these
+        // types at runtime: a plugin compiled against a *static* copy would
+        // produce a second, incompatible `InklinePlugin` protocol and every
+        // `as? InklinePlugin` cast would fail.
+        .library(name: "InklineCore", type: .dynamic, targets: ["InklineCore"]),
+        .library(name: "InklineSyntax", type: .dynamic, targets: ["InklineSyntax"]),
+        .library(name: "InklinePluginAPI", type: .dynamic, targets: ["InklinePluginAPI"])
     ],
     targets: [
         .target(

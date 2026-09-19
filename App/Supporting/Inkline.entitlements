@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Inkline is deliberately NOT sandboxed: Find in Files, the file
+         explorer and third-party plugin bundles all need free access to the
+         file system. That is also why it ships outside the App Store. -->
+    <key>com.apple.security.app-sandbox</key>
+    <false/>
+
+    <!-- Required under the hardened runtime to load plugin bundles that are
+         not signed by the same Developer ID. -->
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <true/>
+
+    <!-- Plugins may shell out (formatters, linters). -->
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <false/>
+    <key>com.apple.security.automation.apple-events</key>
+    <false/>
+</dict>
+</plist>

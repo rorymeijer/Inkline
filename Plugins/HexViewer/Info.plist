@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>nl</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleName</key>
+    <string>Hex-weergave</string>
+    <key>CFBundlePackageType</key>
+    <string>BNDL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>NSPrincipalClass</key>
+    <string>HexViewerPlugin</string>
+    <key>InklinePluginIdentifier</key>
+    <string>nl.rorymeijer.inkline.plugin.hexviewer</string>
+    <key>InklinePluginName</key>
+    <string>Hex-weergave</string>
+    <key>InklinePluginAuthor</key>
+    <string>Inkline</string>
+    <key>InklinePluginSummary</key>
+    <string>Toont de bytes van het actieve document of van een bestand op schijf.</string>
+    <key>InklinePluginAPIVersion</key>
+    <string>1.0</string>
+    <key>InklinePluginCapabilities</key>
+    <array>
+        <string>readFiles</string>
+        <string>contributePanel</string>
+        <string>contributeMenu</string>
+    </array>
+</dict>
+</plist>
