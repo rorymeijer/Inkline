@@ -1,0 +1,114 @@
+{
+  "identifier": "lua",
+  "name": "Lua",
+  "fileExtensions": [
+    "lua"
+  ],
+  "firstLinePattern": "^#!.*\\blua\\b",
+  "comments": {
+    "line": "--",
+    "blockStart": "--[[",
+    "blockEnd": "]]"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "indentationRules": {
+    "increaseAfterPattern": "\\b(?:function|then|do|else|repeat)\\s*$|[\\{\\(\\[]\\s*$",
+    "decreaseOnPattern": "^\\s*(?:end|else|elseif|until)\\b|^\\s*[\\}\\)\\]]",
+    "reindentTriggers": [
+      "d",
+      "e",
+      "}",
+      ")",
+      "]"
+    ]
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "--\\[\\[[\\s\\S]*?\\]\\]",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "--[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "\\[\\[[\\s\\S]*?\\]\\]",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:function|local|return|end)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|do|else|elseif|for|goto|if|in|repeat|then|until|while)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:and|not|or)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|nil|self|_G|_ENV)\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b(?:assert|error|ipairs|pairs|pcall|print|require|select|setmetatable|getmetatable|tonumber|tostring|type|unpack|table|string|math|io|os)\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:local\\s+)?function\\s+([\\w.:]+)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:local\\s+)?([\\w.]+)\\s*=\\s*function",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "lua",
+    "library": "libtree-sitter-lua.dylib",
+    "highlightsQuery": "lua/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

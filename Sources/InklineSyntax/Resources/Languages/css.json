@@ -1,0 +1,93 @@
+{
+  "identifier": "css",
+  "name": "CSS",
+  "fileExtensions": [
+    "css",
+    "scss",
+    "sass",
+    "less"
+  ],
+  "comments": {
+    "blockStart": "/*",
+    "blockEnd": "*/",
+    "line": "//"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "@[A-Za-z-]+"
+    },
+    {
+      "scope": "constant",
+      "pattern": "#[0-9a-fA-F]{3,8}\\b"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d+(?:\\.\\d+)?(?:px|em|rem|vh|vw|%|s|ms|pt|fr|deg|ch|ex|cm|mm|in)?\\b"
+    },
+    {
+      "scope": "property",
+      "pattern": "([-A-Za-z]+)\\s*(?=:)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    },
+    {
+      "scope": "tag",
+      "pattern": "(?:^|[\\s,>+~])([.#]?[A-Za-z][-\\w]*)(?=[^;{}]*\\{)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "attribute",
+      "pattern": "::?[a-z-]+"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "selector",
+      "pattern": "^\\s*([^\\s@{][^{}\\n]*?)\\s*\\{",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "css",
+    "library": "libtree-sitter-css.dylib",
+    "highlightsQuery": "css/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

@@ -1,0 +1,111 @@
+{
+  "identifier": "c",
+  "name": "C",
+  "fileExtensions": [
+    "c",
+    "h"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 8
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "^\\s*#\\s*\\w+"
+    },
+    {
+      "scope": "string",
+      "pattern": "(?:u8|u|U|L)?\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "character",
+      "pattern": "(?:u8|u|U|L)?'(?:[^'\\\\\\n]|\\\\.)'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:auto|const|extern|inline|register|restrict|static|struct|typedef|union|volatile|enum)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|continue|default|do|else|for|goto|if|return|switch|while)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:char|double|float|int|long|short|signed|unsigned|void|size_t|ssize_t|bool|int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|FILE)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:NULL|true|false|nullptr|this)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:sizeof|alignof|typeof)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^[A-Za-z_][\\w \\*]*\\s+\\*?([A-Za-z_]\\w*)\\s*\\([^;]*\\)\\s*\\{",
+      "nameGroup": 1
+    },
+    {
+      "kind": "structure",
+      "pattern": "^\\s*(?:typedef\\s+)?struct\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "enum",
+      "pattern": "^\\s*(?:typedef\\s+)?enum\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "c",
+    "library": "libtree-sitter-c.dylib",
+    "highlightsQuery": "c/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

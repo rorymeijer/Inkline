@@ -1,0 +1,110 @@
+{
+  "identifier": "go",
+  "name": "Go",
+  "fileExtensions": [
+    "go"
+  ],
+  "fileNames": [
+    "go.mod",
+    "go.sum"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": true,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "`(?:[^`\\\\]|\\\\.)*`",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "character",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:const|func|import|interface|map|package|struct|type|var|chan)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|continue|default|defer|else|fallthrough|for|go|goto|if|range|return|select|switch)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:bool|byte|complex64|complex128|error|float32|float64|int|int8|int16|int32|int64|rune|string|uint|uint8|uint16|uint32|uint64|uintptr|any)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|nil|iota)\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b(?:append|cap|close|copy|delete|len|make|new|panic|print|println|recover)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^func\\s+(?:\\([^)]*\\)\\s*)?([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^type\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "go",
+    "library": "libtree-sitter-go.dylib",
+    "highlightsQuery": "go/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

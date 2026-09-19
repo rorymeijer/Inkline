@@ -1,0 +1,72 @@
+{
+  "identifier": "inkline-dark",
+  "name": "Inkline Donker",
+  "appearance": "dark",
+  "colors": {
+    "background": "#1E1F22",
+    "foreground": "#E8E8ED",
+    "caret": "#FFFFFF",
+    "selection": "#2F5C8F",
+    "inactiveSelection": "#3A3A40",
+    "currentLine": "#26282C",
+    "gutterBackground": "#1A1B1E",
+    "lineNumber": "#5E6068",
+    "activeLineNumber": "#E8E8ED",
+    "indentGuide": "#33353A",
+    "invisibles": "#44464C",
+    "findHighlight": "#6B5A1F",
+    "currentFindHighlight": "#A6851F",
+    "bracketMatch": "#3A4D66",
+    "pageGuide": "#2A2C31",
+    "diffInserted": "#1E3225",
+    "diffDeleted": "#3A2224",
+    "bookmark": "#6699FF"
+  },
+  "scopes": {
+    "comment": {
+      "color": "#7F848E",
+      "italic": true
+    },
+    "documentationComment": {
+      "color": "#8FA88F",
+      "italic": true
+    },
+    "keyword": "#C678DD",
+    "controlKeyword": "#C678DD",
+    "storage": "#C678DD",
+    "type": "#E5C07B",
+    "constant": "#D19A66",
+    "number": "#D19A66",
+    "string": "#98C379",
+    "escapeSequence": "#56B6C2",
+    "regularExpression": "#56B6C2",
+    "function": "#61AFEF",
+    "property": "#E06C75",
+    "variable": "#E8E8ED",
+    "operator": "#ABB2BF",
+    "punctuation": "#9196A1",
+    "attribute": "#E5C07B",
+    "tag": "#E06C75",
+    "tagAttribute": "#D19A66",
+    "heading": {
+      "color": "#61AFEF",
+      "bold": true
+    },
+    "emphasis": {
+      "italic": true
+    },
+    "strong": {
+      "bold": true
+    },
+    "link": {
+      "color": "#61AFEF",
+      "underline": true
+    },
+    "listMarker": "#C678DD",
+    "preprocessor": "#C18A56",
+    "error": {
+      "color": "#E06C75",
+      "underline": true
+    }
+  }
+}

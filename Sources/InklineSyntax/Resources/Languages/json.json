@@ -1,0 +1,93 @@
+{
+  "identifier": "json",
+  "name": "JSON",
+  "fileExtensions": [
+    "json",
+    "jsonc",
+    "json5",
+    "webmanifest"
+  ],
+  "fileNames": [
+    ".eslintrc",
+    "composer.json",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "indentationRules": {
+    "increaseAfterPattern": "[\\{\\[]\\s*$",
+    "decreaseOnPattern": "^\\s*[\\}\\]]",
+    "reindentTriggers": [
+      "}",
+      "]"
+    ]
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "property",
+      "pattern": "(\"(?:[^\"\\\\]|\\\\.)*\")\\s*(?=:)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "number",
+      "pattern": "-?\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|null)\\b"
+    },
+    {
+      "scope": "punctuation",
+      "pattern": "[{}\\[\\],:]"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "key",
+      "pattern": "^\\s{0,4}\"([^\"]+)\"\\s*:\\s*[\\{\\[]",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "json",
+    "library": "libtree-sitter-json.dylib",
+    "highlightsQuery": "json/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

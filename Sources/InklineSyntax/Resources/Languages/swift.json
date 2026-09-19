@@ -1,0 +1,129 @@
+{
+  "identifier": "swift",
+  "name": "Swift",
+  "fileExtensions": [
+    "swift"
+  ],
+  "fileNames": [
+    "Package.swift"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "documentationComment",
+      "pattern": "///[^\\n]*"
+    },
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "\"\"\"[\\s\\S]*?\"\"\"",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "attribute",
+      "pattern": "@[A-Za-z_][A-Za-z0-9_]*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:associatedtype|class|deinit|enum|extension|fileprivate|func|import|init|inout|internal|let|open|operator|private|precedencegroup|protocol|public|rethrows|static|struct|subscript|typealias|var|actor)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|catch|continue|default|defer|do|else|fallthrough|for|guard|if|in|repeat|return|switch|throw|throws|try|where|while|async|await)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:Any|as|false|is|nil|self|Self|super|true|some|any|macro)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:convenience|dynamic|final|indirect|lazy|mutating|nonmutating|optional|override|postfix|prefix|required|weak|unowned|willSet|didSet|get|set|throws)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate|open|static|class|final|override|mutating|nonisolated|@\\w+)\\s+)*func\\s+([A-Za-z_][\\w]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate|open|final)\\s+)*class\\s+([A-Za-z_][\\w]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "structure",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate)\\s+)*struct\\s+([A-Za-z_][\\w]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "enum",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate)\\s+)*enum\\s+([A-Za-z_][\\w]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "protocol",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate)\\s+)*protocol\\s+([A-Za-z_][\\w]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*(?:(?:public|private|internal|fileprivate)\\s+)*extension\\s+([A-Za-z_][\\w.]*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "swift",
+    "library": "libtree-sitter-swift.dylib",
+    "highlightsQuery": "swift/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

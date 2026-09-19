@@ -1,0 +1,92 @@
+{
+  "identifier": "yaml",
+  "name": "YAML",
+  "fileExtensions": [
+    "yml",
+    "yaml"
+  ],
+  "fileNames": [
+    ".gitlab-ci.yml",
+    "docker-compose.yml",
+    "project.yml"
+  ],
+  "comments": {
+    "line": "#"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "indentationRules": {
+    "increaseAfterPattern": ":\\s*$",
+    "reindentTriggers": []
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "^---|^\\.\\.\\."
+    },
+    {
+      "scope": "property",
+      "pattern": "^\\s*(?:-\\s+)?([^\\s#][^:\\n]*?)\\s*(?=:(?:\\s|$))",
+      "captureGroup": 1
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "attribute",
+      "pattern": "[&*][A-Za-z_][\\w-]*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|null|yes|no|on|off|~)\\b",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "listMarker",
+      "pattern": "^\\s*-\\s"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "key",
+      "pattern": "^([A-Za-z_][\\w.-]*)\\s*:",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "yaml",
+    "library": "libtree-sitter-yaml.dylib",
+    "highlightsQuery": "yaml/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

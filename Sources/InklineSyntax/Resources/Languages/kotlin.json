@@ -1,0 +1,126 @@
+{
+  "identifier": "kotlin",
+  "name": "Kotlin",
+  "fileExtensions": [
+    "kt",
+    "kts"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "documentationComment",
+      "pattern": "/\\*\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "\"\"\"[\\s\\S]*?\"\"\"",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "character",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)'"
+    },
+    {
+      "scope": "attribute",
+      "pattern": "@[A-Za-z_]\\w*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:abstract|actual|annotation|class|companion|const|crossinline|data|enum|expect|external|final|fun|import|infix|inline|inner|interface|internal|lateinit|noinline|object|open|operator|out|override|package|private|protected|public|reified|sealed|suspend|tailrec|typealias|val|var|vararg)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|catch|continue|do|else|finally|for|if|return|throw|try|when|while)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:as|by|in|is|!in|!is|by)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|null|this|super|it)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:Int|Long|Short|Byte|Float|Double|Boolean|Char|String|Any|Unit|Nothing|List|Map|Set|Array)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:(?:public|private|internal|protected|override|open|suspend|inline|operator|infix|tailrec)\\s+)*fun\\s+(?:<[^>]*>\\s*)?([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*(?:(?:public|private|internal|abstract|sealed|open|data|enum|inner)\\s+)*class\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "interface",
+      "pattern": "^\\s*(?:public\\s+)?interface\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*object\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "kotlin",
+    "library": "libtree-sitter-kotlin.dylib",
+    "highlightsQuery": "kotlin/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

@@ -1,0 +1,85 @@
+{
+  "identifier": "ini",
+  "name": "INI",
+  "fileExtensions": [
+    "ini",
+    "cfg",
+    "conf",
+    "properties",
+    "editorconfig"
+  ],
+  "fileNames": [
+    ".editorconfig",
+    ".gitconfig",
+    "gitconfig"
+  ],
+  "comments": {
+    "line": ";"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 4
+  },
+  "indentationRules": {
+    "reindentTriggers": []
+  },
+  "folding": "none",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": ";[^\\n]*"
+    },
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "heading",
+      "pattern": "^\\s*\\[[^\\]\\n]+\\]"
+    },
+    {
+      "scope": "property",
+      "pattern": "^\\s*([^=;#\\n\\[]+?)\\s*(?==)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|yes|no|on|off)\\b",
+      "caseInsensitive": true
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "section",
+      "pattern": "^\\s*\\[([^\\]\\n]+)\\]",
+      "nameGroup": 1
+    }
+  ],
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

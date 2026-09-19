@@ -1,0 +1,93 @@
+{
+  "identifier": "html",
+  "name": "HTML",
+  "fileExtensions": [
+    "html",
+    "htm",
+    "xhtml"
+  ],
+  "firstLinePattern": "^\\s*<!DOCTYPE\\s+html",
+  "comments": {
+    "blockStart": "<!--",
+    "blockEnd": "-->"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    },
+    {
+      "open": "<",
+      "close": ">"
+    }
+  ],
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "<!--[\\s\\S]*?-->",
+      "multiline": true
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "<!DOCTYPE[^>]*>",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "tag",
+      "pattern": "</?([A-Za-z][A-Za-z0-9:-]*)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "tagAttribute",
+      "pattern": "\\s([A-Za-z_:][-A-Za-z0-9_:.]*)(?=\\s*=)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "constant",
+      "pattern": "&[A-Za-z]+;|&#\\d+;"
+    },
+    {
+      "scope": "punctuation",
+      "pattern": "[<>/]"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "tag",
+      "pattern": "<[A-Za-z][\\w-]*[^>]*\\bid\\s*=\\s*[\"\\']([^\"\\']+)[\"\\']",
+      "nameGroup": 1
+    },
+    {
+      "kind": "section",
+      "pattern": "<(h[1-6])[^>]*>([^<]{1,80})",
+      "nameGroup": 2
+    }
+  ],
+  "treeSitter": {
+    "grammar": "html",
+    "library": "libtree-sitter-html.dylib",
+    "highlightsQuery": "html/highlights.scm"
+  }
+}

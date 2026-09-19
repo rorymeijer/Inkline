@@ -1,0 +1,120 @@
+{
+  "identifier": "javascript",
+  "name": "JavaScript",
+  "fileExtensions": [
+    "js",
+    "mjs",
+    "cjs",
+    "jsx"
+  ],
+  "firstLinePattern": "^#!.*\\bnode\\b",
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "`(?:[^`\\\\]|\\\\.)*`",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "regularExpression",
+      "pattern": "(?<=[=(,:\\[!&|?{};]\\s)\\/(?:[^\\/\\\\\\n\\[]|\\\\.|\\[(?:[^\\]\\\\\\n]|\\\\.)*\\])+\\/[gimsuy]*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:class|const|export|extends|function|import|let|var|async|from|as|get|set|static)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|catch|continue|default|do|else|finally|for|if|return|switch|throw|try|while|yield|await)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|null|undefined|NaN|Infinity|this|super)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:delete|in|instanceof|new|of|typeof|void|with|debugger)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:export\\s+)?(?:async\\s+)?function\\s*\\*?\\s*([A-Za-z_$][\\w$]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*(?:export\\s+)?(?:default\\s+)?class\\s+([A-Za-z_$][\\w$]*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "variable",
+      "pattern": "^\\s*(?:export\\s+)?(?:const|let|var)\\s+([A-Za-z_$][\\w$]*)\\s*=\\s*(?:async\\s*)?(?:\\([^)]*\\)|[A-Za-z_$][\\w$]*)\\s*=>",
+      "nameGroup": 1
+    },
+    {
+      "kind": "method",
+      "pattern": "^\\s{2,}(?:async\\s+)?(?:static\\s+)?([A-Za-z_$][\\w$]*)\\s*\\([^)]*\\)\\s*\\{",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "javascript",
+    "library": "libtree-sitter-javascript.dylib",
+    "highlightsQuery": "javascript/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

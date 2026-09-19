@@ -1,0 +1,133 @@
+{
+  "identifier": "rust",
+  "name": "Rust",
+  "fileExtensions": [
+    "rs"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "documentationComment",
+      "pattern": "///[^\\n]*|//![^\\n]*"
+    },
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "attribute",
+      "pattern": "#!?\\[[^\\]]*\\]"
+    },
+    {
+      "scope": "string",
+      "pattern": "r#*\"[\\s\\S]*?\"#*",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "character",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:as|const|crate|dyn|enum|extern|fn|impl|let|mod|pub|static|struct|trait|type|union|use|where|unsafe)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|continue|else|for|if|in|loop|match|return|while|async|await|yield)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:bool|char|f32|f64|i8|i16|i32|i64|i128|isize|str|u8|u16|u32|u64|u128|usize|String|Vec|Option|Result|Box|Rc|Arc)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|None|Some|Ok|Err|self|Self|super)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:move|ref|mut)\\b"
+    },
+    {
+      "scope": "attribute",
+      "pattern": "'[a-z_]\\w*\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_]\\w*)\\s*(?=[(!])",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:pub(?:\\([^)]*\\))?\\s+)?(?:async\\s+)?(?:unsafe\\s+)?fn\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "structure",
+      "pattern": "^\\s*(?:pub(?:\\([^)]*\\))?\\s+)?struct\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "enum",
+      "pattern": "^\\s*(?:pub(?:\\([^)]*\\))?\\s+)?enum\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "protocol",
+      "pattern": "^\\s*(?:pub(?:\\([^)]*\\))?\\s+)?trait\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*impl(?:<[^>]*>)?\\s+([A-Za-z_][\\w:<>, ]*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "rust",
+    "library": "libtree-sitter-rust.dylib",
+    "highlightsQuery": "rust/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

@@ -1,0 +1,84 @@
+{
+  "identifier": "dockerfile",
+  "name": "Dockerfile",
+  "fileExtensions": [
+    "dockerfile",
+    "containerfile"
+  ],
+  "fileNames": [
+    "Dockerfile",
+    "Containerfile",
+    "Dockerfile.dev",
+    "Dockerfile.prod"
+  ],
+  "comments": {
+    "line": "#"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "indentationRules": {
+    "increaseAfterPattern": "\\\\\\s*$",
+    "reindentTriggers": []
+  },
+  "folding": "none",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "storage",
+      "pattern": "^\\s*(?:FROM|RUN|CMD|LABEL|MAINTAINER|EXPOSE|ENV|ADD|COPY|ENTRYPOINT|VOLUME|USER|WORKDIR|ARG|ONBUILD|STOPSIGNAL|HEALTHCHECK|SHELL)\\b",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:AS|as)\\b"
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "variable",
+      "pattern": "\\$\\{[^}]*\\}|\\$[A-Za-z_]\\w*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d+\\b"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "target",
+      "pattern": "(?i)^\\s*FROM\\s+(\\S+)(?:\\s+AS\\s+(\\S+))?",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "dockerfile",
+    "library": "libtree-sitter-dockerfile.dylib",
+    "highlightsQuery": "dockerfile/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}
