@@ -95,6 +95,7 @@ struct EditorView: NSViewRepresentable {
         textView.settings = environment.settings
         textView.language = document.language
         textView.indentation = document.document.indentation
+        textView.isOverwriteMode = document.isOverwriteMode
         document.textStorage.style = environment.style
         document.textStorage.wrapsLines = environment.settings.wrapsLines
 
@@ -156,6 +157,8 @@ struct EditorView: NSViewRepresentable {
         /// Character ranges hidden by code folding.
         private(set) var hiddenRanges: [NSRange] = []
 
+        private var completionWorkItem: DispatchWorkItem?
+
         init(document: EditorDocument, workspace: WorkspaceModel, environment: AppEnvironment, paneID: UUID) {
             self.document = document
             self.workspace = workspace
@@ -188,9 +191,14 @@ struct EditorView: NSViewRepresentable {
             guard let textView else { return }
             let range = textView.selectedRange()
             document.selection = TextSelection(anchor: range.location, head: NSMaxRange(range))
+            // Keep the core buffer's idea of the selection in step; the status
+            // bar and every headless command read it from there.
+            document.document.buffer.selections = textView.selectedRanges
+                .map(\.rangeValue)
+                .map { TextSelection(anchor: $0.location, head: NSMaxRange($0)) }
             document.selectedRangeCount = max(1, textView.selectedRanges.count + textView.additionalCarets.count)
             document.selectedCharacterCount = textView.selectedRanges
-                .compactMap { ($0 as? NSRange)?.length }
+                .map(\.rangeValue.length)
                 .reduce(0, +)
             ruler?.needsDisplay = true
         }
@@ -203,6 +211,29 @@ struct EditorView: NSViewRepresentable {
             ruler?.updateThickness(forLineCount: document.lineIndex.lineCount)
             ruler?.needsDisplay = true
             workspace.scheduleAutosave()
+            scheduleCompletion()
+        }
+
+        /// Opens the completion list a moment after the user stops typing a
+        /// word. Debounced, and only while actually typing letters — nobody
+        /// wants a popup after every backspace.
+        private func scheduleCompletion() {
+            completionWorkItem?.cancel()
+            guard environment.settings.completionEnabled, let textView else { return }
+            let caret = textView.selectedRange()
+            guard caret.length == 0, caret.location > 0 else { return }
+            let text = textView.string as NSString
+            let previous = text.substring(with: NSRange(location: caret.location - 1, length: 1))
+            guard previous.rangeOfCharacter(from: .alphanumerics) != nil || previous == "_" else { return }
+
+            let workItem = DispatchWorkItem { [weak self] in
+                guard let textView = self?.textView,
+                      textView.rangeForUserCompletion.location != NSNotFound,
+                      textView.window?.firstResponder === textView else { return }
+                textView.complete(nil)
+            }
+            completionWorkItem = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: workItem)
         }
 
         func textViewDidChangeSelection(_ notification: Notification) {

@@ -1,3 +1,5 @@
+import AppKit
+import UniformTypeIdentifiers
 import SwiftUI
 import InklineCore
 import InklineSyntax

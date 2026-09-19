@@ -56,9 +56,11 @@ final class InklineTextStorage: NSTextStorage {
         fatalError("init(coder:) wordt niet gebruikt")
     }
 
-    @available(*, unavailable)
-    override init(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
-        fatalError("niet ondersteund")
+    /// Required by `NSPasteboardReading`, which `NSAttributedString` adopts.
+    /// Inkline never creates a storage straight from the pasteboard.
+    required init?(pasteboardPropertyList propertyList: Any,
+                   ofType type: NSPasteboard.PasteboardType) {
+        fatalError("init(pasteboardPropertyList:ofType:) wordt niet gebruikt")
     }
 
     // MARK: NSTextStorage primitives

@@ -73,8 +73,8 @@ struct DiffView: View {
             if let result = model.result {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 0) {
-                        ForEach(Array(result.rows.enumerated()), id: \.offset) { _, row in
-                            DiffRowView(row: row, style: environment.style)
+                        ForEach(result.rows.indices, id: \.self) { index in
+                            DiffRowView(row: result.rows[index], style: environment.style)
                         }
                     }
                 }

@@ -21,6 +21,7 @@ final class EditorPane: ObservableObject, Identifiable {
 enum SidebarPanel: String, CaseIterable, Identifiable {
     case explorer
     case symbols
+    case map
     case searchResults
     case plugins
 
@@ -30,6 +31,7 @@ enum SidebarPanel: String, CaseIterable, Identifiable {
         switch self {
         case .explorer: return NSLocalizedString("Bestanden", comment: "Zijpaneel: bestandsverkenner")
         case .symbols: return NSLocalizedString("Functielijst", comment: "Zijpaneel: symbolen")
+        case .map: return NSLocalizedString("Documentkaart", comment: "Zijpaneel: minikaart")
         case .searchResults: return NSLocalizedString("Zoekresultaten", comment: "Zijpaneel: zoekresultaten")
         case .plugins: return NSLocalizedString("Plugins", comment: "Zijpaneel: pluginpanelen")
         }
@@ -39,6 +41,7 @@ enum SidebarPanel: String, CaseIterable, Identifiable {
         switch self {
         case .explorer: return "folder"
         case .symbols: return "list.bullet.indent"
+        case .map: return "map"
         case .searchResults: return "magnifyingglass"
         case .plugins: return "puzzlepiece.extension"
         }

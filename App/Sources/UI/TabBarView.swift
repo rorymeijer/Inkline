@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 /// The tab strip: reorderable, closable, with the unsaved-changes dot that

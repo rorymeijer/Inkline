@@ -33,6 +33,9 @@ final class InklineTextView: NSTextView {
     /// `selectedRange`).
     private(set) var additionalCarets: [Int] = []
 
+    /// OVR in the status bar: typing replaces the character under the caret.
+    var isOverwriteMode = false
+
     /// Called for every user action that a macro should remember.
     var onRecordMacroAction: ((MacroAction) -> Void)?
     var onSelectionChange: (() -> Void)?
@@ -279,6 +282,17 @@ final class InklineTextView: NSTextView {
 
     override func insertText(_ insertString: Any, replacementRange: NSRange) {
         let text = (insertString as? String) ?? (insertString as? NSAttributedString)?.string ?? ""
+
+        if isOverwriteMode, additionalCarets.isEmpty, selectedRange().length == 0, text != "\n" {
+            // Overwrite: swallow the character to the right, unless we are at
+            // the end of a line, where OVR behaves like INS everywhere.
+            let characters = string as NSString
+            let location = selectedRange().location
+            if location < characters.length,
+               characters.substring(with: NSRange(location: location, length: 1)) != "\n" {
+                setSelectedRange(NSRange(location: location, length: 1))
+            }
+        }
 
         if !additionalCarets.isEmpty {
             insertAtAllCarets(text)

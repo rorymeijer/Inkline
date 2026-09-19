@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import InklineCore
 
@@ -66,10 +67,10 @@ struct MacroManagerView: View {
                 Divider()
 
                 Text(NSLocalizedString("Stappen", comment: "Kop")).font(.headline)
-                List(Array(macro.actions.enumerated()), id: \.offset) { index, action in
+                List(macro.actions.indices, id: \.self) { index in
                     HStack {
                         Text("\(index + 1).").foregroundStyle(.tertiary).frame(width: 24, alignment: .trailing)
-                        Text(action.displayDescription).font(.system(size: 11))
+                        Text(macro.actions[index].displayDescription).font(.system(size: 11))
                     }
                 }
                 .frame(minHeight: 140)

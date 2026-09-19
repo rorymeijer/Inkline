@@ -238,6 +238,24 @@ final class EditorDocument: ObservableObject, Identifiable {
         foldingState = folding
     }
 
+    func collapseAllFolds() {
+        var folding = foldingState
+        folding.collapseAll()
+        foldingState = folding
+    }
+
+    func expandAllFolds() {
+        var folding = foldingState
+        folding.expandAll()
+        foldingState = folding
+    }
+
+    func collapseFolds(toLevel level: Int) {
+        var folding = foldingState
+        folding.collapse(toLevel: level)
+        foldingState = folding
+    }
+
     func toggleBookmark(atLine line: Int) {
         document.bookmarks.toggle(line)
         objectWillChange.send()

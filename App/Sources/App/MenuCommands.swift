@@ -215,9 +215,9 @@ struct InklineCommands: Commands {
         }
 
         CommandMenu(NSLocalizedString("Taal", comment: "Menutitel")) {
-            ForEach(environment.languageRegistry.groupedByInitial(), id: \.0) { group in
-                Menu(group.0) {
-                    ForEach(group.1) { language in
+            ForEach(environment.languageRegistry.groupedByInitial()) { group in
+                Menu(group.id) {
+                    ForEach(group.languages) { language in
                         Button(language.name) { workspace?.setLanguage(language) }
                     }
                 }
@@ -300,22 +300,11 @@ struct InklineCommands: Commands {
     }
 
     private func collapseAll() {
-        guard let document = workspace?.activeDocument else { return }
-        var folding = document.foldingState
-        folding.collapseAll()
-        document.objectWillChange.send()
-        setFolding(folding, on: document)
+        workspace?.activeDocument?.collapseAllFolds()
     }
 
     private func expandAll() {
-        guard let document = workspace?.activeDocument else { return }
-        var folding = document.foldingState
-        folding.expandAll()
-        setFolding(folding, on: document)
-    }
-
-    private func setFolding(_ folding: FoldingState, on document: EditorDocument) {
-        document.foldingState = folding
+        workspace?.activeDocument?.expandAllFolds()
     }
 
     private func promptForLineNumber() {

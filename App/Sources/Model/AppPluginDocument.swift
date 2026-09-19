@@ -40,8 +40,8 @@ final class AppPluginDocument: PluginDocument {
 
     var selectedRanges: [Range<Int>] {
         guard let textView = currentTextView else { return [document.selection.range] }
-        return textView.selectedRanges.compactMap { value in
-            guard let range = value as? NSRange else { return nil }
+        return textView.selectedRanges.map { value in
+            let range = value.rangeValue
             return range.location..<NSMaxRange(range)
         }
     }

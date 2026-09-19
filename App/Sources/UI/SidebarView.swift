@@ -36,6 +36,8 @@ struct SidebarView: View {
                 SymbolListPanel(workspace: workspace)
             case .searchResults:
                 FindInFilesPanel(model: workspace.findInFiles, workspace: workspace)
+            case .map:
+                DocumentMapPanel(workspace: workspace, environment: environment)
             case .plugins:
                 PluginPanelHost(environment: environment)
             }
@@ -212,6 +214,15 @@ struct FindInFilesPanel: View {
     @ObservedObject var model: FindInFilesModel
     @ObservedObject var workspace: WorkspaceModel
 
+    private func replaceOnDisk() {
+        let openURLs = Set(workspace.documents.values.compactMap { $0.fileURL?.standardizedFileURL })
+        let summary = model.replaceAllOnDisk(skipping: openURLs)
+        workspace.alert = WorkspaceAlert(title: NSLocalizedString("Vervangen in bestanden",
+                                                                  comment: "Titel van de melding"),
+                                         message: summary)
+        model.start()
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 6) {
@@ -251,6 +262,18 @@ struct FindInFilesPanel: View {
                 }
                 .toggleStyle(.checkbox)
                 .font(.caption)
+
+                HStack {
+                    TextField(NSLocalizedString("Vervangen door", comment: "Invoerveld"),
+                              text: $model.replacement)
+                        .textFieldStyle(.roundedBorder)
+                    Button(NSLocalizedString("Vervang op schijf", comment: "Knop")) {
+                        replaceOnDisk()
+                    }
+                    .disabled(model.hits.isEmpty || model.isSearching)
+                    .help(NSLocalizedString("Bestanden die in een tabblad openstaan worden overgeslagen.",
+                                            comment: "Tooltip"))
+                }
             }
             .padding(8)
 
@@ -265,7 +288,7 @@ struct FindInFilesPanel: View {
             }
 
             List {
-                ForEach(model.hitsByFile, id: \.url) { group in
+                ForEach(model.hitsByFile) { group in
                     Section(group.url.lastPathComponent) {
                         ForEach(group.hits) { hit in
                             HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -331,4 +354,79 @@ struct PluginPanelContainer: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {}
+}
+
+
+// MARK: - Document map
+
+/// A miniature of the whole document: one thin bar per line, scaled to the
+/// panel. Drawn with `Canvas` from the line lengths the piece table already
+/// knows, so it costs nothing to keep up to date, and clicking scrolls there.
+struct DocumentMapPanel: View {
+
+    @ObservedObject var workspace: WorkspaceModel
+    @ObservedObject var environment: AppEnvironment
+
+    /// Beyond this, only every n-th line is drawn; a 3-million-line document
+    /// has far more lines than the panel has pixels anyway.
+    private static let maximumDrawnLines = 4_000
+
+    var body: some View {
+        if let document = workspace.activeDocument {
+            GeometryReader { geometry in
+                Canvas { context, size in
+                    draw(document: document, context: &context, size: size)
+                }
+                .contentShape(Rectangle())
+                .onTapGesture { location in
+                    let fraction = min(max(location.y / geometry.size.height, 0), 1)
+                    let line = Int(Double(document.lineIndex.lineCount - 1) * fraction)
+                    workspace.goToLine(line)
+                }
+            }
+            .background(Color(nsColor: environment.style.gutterBackgroundColor))
+        } else {
+            Text(NSLocalizedString("Geen document", comment: "Lege documentkaart"))
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    private func draw(document: EditorDocument, context: inout GraphicsContext, size: CGSize) {
+        let table = document.lineIndex
+        let lineCount = max(1, table.lineCount)
+        let step = max(1, lineCount / Self.maximumDrawnLines)
+        let rowHeight = size.height / CGFloat((lineCount + step - 1) / step)
+        let barHeight = max(1, min(rowHeight - 0.5, 2))
+        let foreground = Color(nsColor: environment.style.foregroundColor).opacity(0.55)
+        let highlight = Color(nsColor: environment.style.bookmarkColor)
+
+        var row = 0
+        var line = 0
+        while line < lineCount {
+            let content = table.lineContentRange(line)
+            let length = min(content.count, 120)
+            if length > 0 {
+                let indent = table.line(line).prefix { $0 == " " || $0 == "\t" }.count
+                let x = size.width * CGFloat(min(indent, 40)) / 120
+                let width = max(1, size.width * CGFloat(length - min(indent, length)) / 120)
+                let rect = CGRect(x: x, y: CGFloat(row) * rowHeight, width: width, height: barHeight)
+                context.fill(Path(rect),
+                             with: .color(document.document.bookmarks.contains(line) ? highlight : foreground))
+            }
+            row += 1
+            line += step
+        }
+
+        // Viewport indicator.
+        if let textView = workspace.activeTextView,
+           let scrollView = textView.enclosingScrollView,
+           textView.bounds.height > 0 {
+            let visible = scrollView.contentView.bounds
+            let top = size.height * (visible.minY / max(1, textView.bounds.height))
+            let height = size.height * (visible.height / max(1, textView.bounds.height))
+            context.fill(Path(CGRect(x: 0, y: top, width: size.width, height: max(4, height))),
+                         with: .color(Color(nsColor: environment.style.selectionColor).opacity(0.25)))
+        }
+    }
 }

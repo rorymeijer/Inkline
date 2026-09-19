@@ -211,9 +211,16 @@ final class FindInFilesModel: ObservableObject {
 
     private var search: FindInFilesSearch?
 
-    var hitsByFile: [(url: URL, hits: [FileSearchHit])] {
+    struct FileGroup: Identifiable {
+        let url: URL
+        let hits: [FileSearchHit]
+        var id: String { url.path }
+    }
+
+    var hitsByFile: [FileGroup] {
         let grouped = Dictionary(grouping: hits, by: \.url)
-        return grouped.keys.sorted { $0.path < $1.path }.map { ($0, grouped[$0] ?? []) }
+        return grouped.keys.sorted { $0.path < $1.path }
+            .map { FileGroup(url: $0, hits: grouped[$0] ?? []) }
     }
 
     func start() {
@@ -267,7 +274,8 @@ final class FindInFilesModel: ObservableObject {
         var changedFiles = 0
         var replacements = 0
         var skipped = 0
-        for (url, _) in hitsByFile {
+        for group in hitsByFile {
+            let url = group.url
             if openURLs.contains(url.standardizedFileURL) {
                 skipped += 1
                 continue

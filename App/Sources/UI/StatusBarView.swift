@@ -93,9 +93,9 @@ struct StatusBarView: View {
 
     private var languageMenu: some View {
         Menu {
-            ForEach(environment.languageRegistry.groupedByInitial(), id: \.0) { group in
-                Menu(group.0) {
-                    ForEach(group.1) { language in
+            ForEach(environment.languageRegistry.groupedByInitial()) { group in
+                Menu(group.id) {
+                    ForEach(group.languages) { language in
                         Button(language.name) { workspace.setLanguage(language) }
                     }
                 }

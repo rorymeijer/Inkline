@@ -124,12 +124,18 @@ public final class LanguageRegistry {
         return plainText
     }
 
-    /// Languages grouped by first letter, for the Taal menu.
-    public func groupedByInitial() -> [(String, [LanguageDefinition])] {
+    /// Languages grouped by first letter, for the Taal menu. A named type
+    /// rather than a tuple so SwiftUI can iterate it directly.
+    public struct LanguageGroup: Identifiable, Equatable {
+        public let id: String
+        public let languages: [LanguageDefinition]
+    }
+
+    public func groupedByInitial() -> [LanguageGroup] {
         let groups = Dictionary(grouping: languages) { language in
             String(language.name.prefix(1)).uppercased()
         }
-        return groups.sorted { $0.key < $1.key }.map { ($0.key, $0.value) }
+        return groups.sorted { $0.key < $1.key }.map { LanguageGroup(id: $0.key, languages: $0.value) }
     }
 }
 
