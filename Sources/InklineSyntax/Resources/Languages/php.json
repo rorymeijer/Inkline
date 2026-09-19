@@ -1,0 +1,131 @@
+{
+  "identifier": "php",
+  "name": "PHP",
+  "fileExtensions": [
+    "php",
+    "phtml",
+    "php3",
+    "php4",
+    "php5",
+    "phps"
+  ],
+  "firstLinePattern": "^<\\?php",
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "<\\?php|<\\?=|\\?>"
+    },
+    {
+      "scope": "string",
+      "pattern": "<<<[\\'\"]?(\\w+)[\\'\"]?[\\s\\S]*?^\\1;",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "variable",
+      "pattern": "\\$[A-Za-z_]\\w*"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:abstract|class|const|extends|final|function|global|implements|interface|namespace|new|private|protected|public|static|trait|use|var|enum|readonly)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|catch|continue|declare|default|do|else|elseif|endfor|endforeach|endif|endswitch|endwhile|finally|for|foreach|goto|if|match|return|switch|throw|try|while|yield)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:array|bool|callable|echo|empty|float|include|include_once|instanceof|int|isset|list|print|require|require_once|string|unset|void|iterable|object|mixed|never)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|null|this|parent|self)\\b",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:(?:public|private|protected|static|final|abstract)\\s+)*function\\s+&?([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*(?:(?:final|abstract)\\s+)*class\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "interface",
+      "pattern": "^\\s*interface\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*trait\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "php",
+    "library": "libtree-sitter-php.dylib",
+    "highlightsQuery": "php/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

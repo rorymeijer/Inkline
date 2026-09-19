@@ -1,0 +1,96 @@
+{
+  "identifier": "sql",
+  "name": "SQL",
+  "fileExtensions": [
+    "sql",
+    "ddl",
+    "dml",
+    "pgsql",
+    "mysql"
+  ],
+  "comments": {
+    "line": "--",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "--[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"]|\"\")*\""
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d+(?:\\.\\d+)?\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:select|from|where|insert|into|values|update|set|delete|create|alter|drop|table|view|index|trigger|procedure|function|database|schema|join|inner|left|right|full|outer|cross|on|using|group|by|order|having|limit|offset|union|all|distinct|as|and|or|not|in|exists|between|like|ilike|is|null|case|when|then|else|end|begin|commit|rollback|transaction|primary|key|foreign|references|constraint|unique|check|default|cascade|with|recursive|returning|grant|revoke|truncate|explain|analyze)\\b",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:int|integer|bigint|smallint|serial|varchar|char|text|boolean|bool|date|time|timestamp|timestamptz|numeric|decimal|real|double|json|jsonb|uuid|bytea|blob|float)\\b",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "type",
+      "pattern": "(?i)^\\s*create\\s+(?:or\\s+replace\\s+)?(?:temp\\w*\\s+)?table\\s+(?:if\\s+not\\s+exists\\s+)?([\\w.\"]+)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "function",
+      "pattern": "(?i)^\\s*create\\s+(?:or\\s+replace\\s+)?function\\s+([\\w.\"]+)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "(?i)^\\s*create\\s+(?:or\\s+replace\\s+)?view\\s+([\\w.\"]+)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "sql",
+    "library": "libtree-sitter-sql.dylib",
+    "highlightsQuery": "sql/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

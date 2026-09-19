@@ -1,0 +1,72 @@
+{
+  "identifier": "inkline-papier",
+  "name": "Inkline Papier",
+  "appearance": "light",
+  "colors": {
+    "background": "#FBF6EA",
+    "foreground": "#3A3226",
+    "caret": "#3A3226",
+    "selection": "#E4D7B5",
+    "inactiveSelection": "#DCDCDC",
+    "currentLine": "#F3ECDB",
+    "gutterBackground": "#F6F0E2",
+    "lineNumber": "#B3A78C",
+    "activeLineNumber": "#3A3226",
+    "indentGuide": "#E8DFC8",
+    "invisibles": "#C8C8CC",
+    "findHighlight": "#FFE9A8",
+    "currentFindHighlight": "#FFC64D",
+    "bracketMatch": "#E3D3A8",
+    "pageGuide": "#EFE7D2",
+    "diffInserted": "#E4F7E7",
+    "diffDeleted": "#FCE8E8",
+    "bookmark": "#3E7BFA"
+  },
+  "scopes": {
+    "comment": {
+      "color": "#6E7781",
+      "italic": true
+    },
+    "documentationComment": {
+      "color": "#4B7A5E",
+      "italic": true
+    },
+    "keyword": "#8A4B24",
+    "controlKeyword": "#8A4B24",
+    "storage": "#8A4B24",
+    "type": "#3F6B4F",
+    "constant": "#7A3E2C",
+    "number": "#7A3E2C",
+    "string": "#7B6420",
+    "escapeSequence": "#8B3A2F",
+    "regularExpression": "#B33E1E",
+    "function": "#3B5A8A",
+    "property": "#326D74",
+    "variable": "#1D1D1F",
+    "operator": "#4A4A50",
+    "punctuation": "#6E6E73",
+    "attribute": "#805B1F",
+    "tag": "#9B2393",
+    "tagAttribute": "#805B1F",
+    "heading": {
+      "color": "#0F6FC5",
+      "bold": true
+    },
+    "emphasis": {
+      "italic": true
+    },
+    "strong": {
+      "bold": true
+    },
+    "link": {
+      "color": "#0B63C5",
+      "underline": true
+    },
+    "listMarker": "#9B2393",
+    "preprocessor": "#78492A",
+    "error": {
+      "color": "#D01919",
+      "underline": true
+    }
+  }
+}

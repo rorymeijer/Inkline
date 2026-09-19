@@ -1,0 +1,123 @@
+{
+  "identifier": "python",
+  "name": "Python",
+  "fileExtensions": [
+    "py",
+    "pyw",
+    "pyi",
+    "py3"
+  ],
+  "fileNames": [
+    "SConstruct",
+    "wscript"
+  ],
+  "firstLinePattern": "^#!.*\\bpython[0-9.]*\\b",
+  "comments": {
+    "line": "#"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "indentationRules": {
+    "increaseAfterPattern": ":\\s*(?:#[^\\n]*)?$",
+    "decreaseOnPattern": "^\\s*(?:else|elif|except|finally)\\b",
+    "reindentTriggers": [
+      ":"
+    ]
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "string",
+      "pattern": "\"\"\"[\\s\\S]*?\"\"\"",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "'''[\\s\\S]*?'''",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "(?:[rRbBfFuU]{1,2})?\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "(?:[rRbBfFuU]{1,2})?'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "attribute",
+      "pattern": "@[A-Za-z_][\\w.]*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:class|def|lambda|import|from|as|global|nonlocal|async|await)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|continue|elif|else|except|finally|for|if|raise|return|try|while|with|yield|match|case)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:and|assert|del|in|is|not|or|pass)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:True|False|None|self|cls|__name__|NotImplemented|Ellipsis)\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b(?:int|str|float|bool|list|dict|set|tuple|bytes|object|type|range|print|len|open|enumerate|zip|map|filter|sum|min|max|abs|isinstance|super)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^\\s*(?:async\\s+)?def\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*class\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "python",
+    "library": "libtree-sitter-python.dylib",
+    "highlightsQuery": "python/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "identifier": "markdown",
+  "name": "Markdown",
+  "fileExtensions": [
+    "md",
+    "markdown",
+    "mdown",
+    "mkd",
+    "mdx"
+  ],
+  "comments": {
+    "blockStart": "<!--",
+    "blockEnd": "-->"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 4
+  },
+  "indentationRules": {
+    "reindentTriggers": []
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "<!--[\\s\\S]*?-->",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "```[\\s\\S]*?```",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "`[^`\\n]+`"
+    },
+    {
+      "scope": "heading",
+      "pattern": "^#{1,6}[^\\n]*"
+    },
+    {
+      "scope": "heading",
+      "pattern": "^[^\\n]+\\n[=-]{2,}$",
+      "multiline": true
+    },
+    {
+      "scope": "link",
+      "pattern": "\\[[^\\]\\n]*\\]\\([^)\\n]*\\)"
+    },
+    {
+      "scope": "link",
+      "pattern": "<https?://[^>\\n]+>"
+    },
+    {
+      "scope": "strong",
+      "pattern": "\\*\\*[^*\\n]+\\*\\*"
+    },
+    {
+      "scope": "strong",
+      "pattern": "__[^_\\n]+__"
+    },
+    {
+      "scope": "emphasis",
+      "pattern": "(?<!\\*)\\*[^*\\n]+\\*(?!\\*)"
+    },
+    {
+      "scope": "emphasis",
+      "pattern": "(?<!_)_[^_\\n]+_(?!_)"
+    },
+    {
+      "scope": "listMarker",
+      "pattern": "^\\s*(?:[-*+]|\\d+\\.)\\s"
+    },
+    {
+      "scope": "comment",
+      "pattern": "^\\s*>[^\\n]*"
+    },
+    {
+      "scope": "punctuation",
+      "pattern": "^\\s*(?:---|\\*\\*\\*|___)\\s*$"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "section",
+      "pattern": "^(#{1,6})\\s+([^\\n]+)",
+      "nameGroup": 2
+    }
+  ],
+  "treeSitter": {
+    "grammar": "markdown",
+    "library": "libtree-sitter-markdown.dylib",
+    "highlightsQuery": "markdown/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

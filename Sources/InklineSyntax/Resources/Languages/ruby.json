@@ -1,0 +1,140 @@
+{
+  "identifier": "ruby",
+  "name": "Ruby",
+  "fileExtensions": [
+    "rb",
+    "rake",
+    "gemspec",
+    "ru"
+  ],
+  "fileNames": [
+    "Gemfile",
+    "Rakefile",
+    "Podfile",
+    "Fastfile"
+  ],
+  "firstLinePattern": "^#!.*\\bruby\\b",
+  "comments": {
+    "line": "#",
+    "blockStart": "=begin",
+    "blockEnd": "=end"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "indentationRules": {
+    "increaseAfterPattern": "\\b(?:def|class|module|do|if|unless|case|begin|while|until)\\b[^\\n]*$|[\\{\\[\\(]\\s*$",
+    "decreaseOnPattern": "^\\s*(?:end|else|elsif|when|rescue|ensure)\\b|^\\s*[\\}\\]\\)]",
+    "reindentTriggers": [
+      "d",
+      "e",
+      "}",
+      "]",
+      ")"
+    ]
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "^=begin[\\s\\S]*?^=end",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "string",
+      "pattern": "%[wiWI]?[\\[\\({][^\\]\\)\\}]*[\\]\\)\\}]"
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "string",
+      "pattern": "<<[-~]?[\\'\"]?(\\w+)[\\'\"]?[\\s\\S]*?^\\s*\\1",
+      "multiline": true
+    },
+    {
+      "scope": "constant",
+      "pattern": ":[A-Za-z_]\\w*[?!]?"
+    },
+    {
+      "scope": "variable",
+      "pattern": "@{1,2}[A-Za-z_]\\w*|\\$[A-Za-z_]\\w*"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:alias|begin|class|def|defined?|end|module|private|protected|public|require|require_relative|attr_accessor|attr_reader|attr_writer|include|extend|lambda|proc)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|do|else|elsif|ensure|for|if|in|next|redo|rescue|retry|return|then|unless|until|when|while|yield)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:and|not|or|super|undef)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false|nil|self|__FILE__|__LINE__)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "method",
+      "pattern": "^\\s*def\\s+((?:self\\.)?[A-Za-z_]\\w*[?!=]?)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*class\\s+([A-Z]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*module\\s+([A-Z]\\w*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "ruby",
+    "library": "libtree-sitter-ruby.dylib",
+    "highlightsQuery": "ruby/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

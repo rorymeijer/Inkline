@@ -1,0 +1,12 @@
+.DS_Store
+*.xcuserstate
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+App/Inkline.xcodeproj/
+.build/
+.swiftpm/
+DerivedData/
+Releases/
+Notarized/
+*.dmg
+*.zip

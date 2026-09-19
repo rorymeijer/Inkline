@@ -1,0 +1,72 @@
+{
+  "identifier": "inkline-light",
+  "name": "Inkline Licht",
+  "appearance": "light",
+  "colors": {
+    "background": "#FFFFFF",
+    "foreground": "#1D1D1F",
+    "caret": "#1D1D1F",
+    "selection": "#B3D7FF",
+    "inactiveSelection": "#DCDCDC",
+    "currentLine": "#F2F5FA",
+    "gutterBackground": "#FAFAFA",
+    "lineNumber": "#A0A0A5",
+    "activeLineNumber": "#1D1D1F",
+    "indentGuide": "#E4E4E8",
+    "invisibles": "#C8C8CC",
+    "findHighlight": "#FFE9A8",
+    "currentFindHighlight": "#FFC64D",
+    "bracketMatch": "#D5E8FF",
+    "pageGuide": "#EDEDF0",
+    "diffInserted": "#E4F7E7",
+    "diffDeleted": "#FCE8E8",
+    "bookmark": "#3E7BFA"
+  },
+  "scopes": {
+    "comment": {
+      "color": "#6E7781",
+      "italic": true
+    },
+    "documentationComment": {
+      "color": "#4B7A5E",
+      "italic": true
+    },
+    "keyword": "#9B2393",
+    "controlKeyword": "#9B2393",
+    "storage": "#9B2393",
+    "type": "#0F6FC5",
+    "constant": "#1C6B48",
+    "number": "#1C6B48",
+    "string": "#C41A16",
+    "escapeSequence": "#8B3A2F",
+    "regularExpression": "#B33E1E",
+    "function": "#3E4CAB",
+    "property": "#326D74",
+    "variable": "#1D1D1F",
+    "operator": "#4A4A50",
+    "punctuation": "#6E6E73",
+    "attribute": "#805B1F",
+    "tag": "#9B2393",
+    "tagAttribute": "#805B1F",
+    "heading": {
+      "color": "#0F6FC5",
+      "bold": true
+    },
+    "emphasis": {
+      "italic": true
+    },
+    "strong": {
+      "bold": true
+    },
+    "link": {
+      "color": "#0B63C5",
+      "underline": true
+    },
+    "listMarker": "#9B2393",
+    "preprocessor": "#78492A",
+    "error": {
+      "color": "#D01919",
+      "underline": true
+    }
+  }
+}

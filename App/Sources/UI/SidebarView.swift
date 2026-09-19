@@ -1,0 +1,432 @@
+import AppKit
+import SwiftUI
+import InklineCore
+import InklinePluginAPI
+import InklineSyntax
+
+/// The docking sidebar: file explorer, function list, search results and the
+/// panels plugins contribute, selected with a segmented control at the top.
+struct SidebarView: View {
+
+    @ObservedObject var workspace: WorkspaceModel
+    @ObservedObject var environment: AppEnvironment
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Picker("", selection: Binding(
+                get: { workspace.visibleSidebarPanel ?? .explorer },
+                set: { workspace.visibleSidebarPanel = $0 }
+            )) {
+                ForEach(SidebarPanel.allCases) { panel in
+                    Image(systemName: panel.symbolName)
+                        .help(panel.title)
+                        .tag(panel)
+                }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .padding(6)
+
+            Divider()
+
+            switch workspace.visibleSidebarPanel ?? .explorer {
+            case .explorer:
+                FileExplorerPanel(workspace: workspace)
+            case .symbols:
+                SymbolListPanel(workspace: workspace)
+            case .searchResults:
+                FindInFilesPanel(model: workspace.findInFiles, workspace: workspace)
+            case .map:
+                DocumentMapPanel(workspace: workspace, environment: environment)
+            case .plugins:
+                PluginPanelHost(environment: environment)
+            }
+        }
+        .background(.regularMaterial)
+    }
+}
+
+// MARK: - File explorer
+
+/// A lazily loaded directory tree. Children are read when a folder is expanded,
+/// so opening a repository with 100 000 files costs nothing until you look.
+final class FileNode: Identifiable, ObservableObject {
+    let url: URL
+    let isDirectory: Bool
+    @Published var children: [FileNode]?
+
+    init(url: URL) {
+        self.url = url
+        self.isDirectory = (try? url.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory ?? false
+    }
+
+    var id: String { url.path }
+    var name: String { url.lastPathComponent }
+
+    func loadChildrenIfNeeded(includingHidden: Bool = false) {
+        guard isDirectory, children == nil else { return }
+        let contents = (try? FileManager.default.contentsOfDirectory(
+            at: url,
+            includingPropertiesForKeys: [.isDirectoryKey],
+            options: includingHidden ? [] : [.skipsHiddenFiles])) ?? []
+        children = contents
+            .map(FileNode.init)
+            .sorted { lhs, rhs in
+                if lhs.isDirectory != rhs.isDirectory { return lhs.isDirectory }
+                return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+            }
+    }
+}
+
+struct FileExplorerPanel: View {
+
+    @ObservedObject var workspace: WorkspaceModel
+    @State private var roots: [FileNode] = []
+
+    var body: some View {
+        VStack(spacing: 0) {
+            if workspace.explorerRoots.isEmpty {
+                VStack(spacing: 8) {
+                    Text(NSLocalizedString("Geen map geopend", comment: "Lege bestandsverkenner"))
+                        .foregroundStyle(.secondary)
+                    Button(NSLocalizedString("Map openen…", comment: "Knop")) {
+                        workspace.openFolderPanel()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List {
+                    ForEach(roots) { root in
+                        FileNodeRow(node: root, workspace: workspace)
+                    }
+                }
+                .listStyle(.sidebar)
+            }
+        }
+        .onAppear(perform: refreshRoots)
+        .onChange(of: workspace.explorerRoots) { _ in refreshRoots() }
+    }
+
+    private func refreshRoots() {
+        roots = workspace.explorerRoots.map(FileNode.init)
+        for root in roots { root.loadChildrenIfNeeded() }
+    }
+}
+
+struct FileNodeRow: View {
+
+    @ObservedObject var node: FileNode
+    @ObservedObject var workspace: WorkspaceModel
+    @State private var isExpanded = false
+
+    var body: some View {
+        if node.isDirectory {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                ForEach(node.children ?? []) { child in
+                    FileNodeRow(node: child, workspace: workspace)
+                }
+            } label: {
+                Label(node.name, systemImage: "folder")
+                    .lineLimit(1)
+            }
+            .onChange(of: isExpanded) { expanded in
+                if expanded { node.loadChildrenIfNeeded() }
+            }
+            .contextMenu {
+                Button(NSLocalizedString("Zoek in deze map…", comment: "Contextmenu")) {
+                    workspace.findInFiles.searchRoot = node.url
+                    workspace.visibleSidebarPanel = .searchResults
+                }
+                Button(NSLocalizedString("Toon in Finder", comment: "Contextmenu")) {
+                    NSWorkspace.shared.activateFileViewerSelecting([node.url])
+                }
+                Button(NSLocalizedString("Verwijder uit zijbalk", comment: "Contextmenu")) {
+                    workspace.removeExplorerRoot(node.url)
+                }
+            }
+        } else {
+            Label(node.name, systemImage: "doc.text")
+                .lineLimit(1)
+                .contentShape(Rectangle())
+                .onTapGesture(count: 2) { workspace.open(url: node.url) }
+                .contextMenu {
+                    Button(NSLocalizedString("Openen", comment: "Contextmenu")) {
+                        workspace.open(url: node.url)
+                    }
+                    Button(NSLocalizedString("Toon in Finder", comment: "Contextmenu")) {
+                        NSWorkspace.shared.activateFileViewerSelecting([node.url])
+                    }
+                }
+        }
+    }
+}
+
+// MARK: - Function list
+
+struct SymbolListPanel: View {
+
+    @ObservedObject var workspace: WorkspaceModel
+    @State private var filter = ""
+
+    var body: some View {
+        VStack(spacing: 0) {
+            TextField(NSLocalizedString("Filter", comment: "Invoerveld"), text: $filter)
+                .textFieldStyle(.roundedBorder)
+                .padding(6)
+            Divider()
+            if let document = workspace.activeDocument {
+                let symbols = document.symbols.filter {
+                    filter.isEmpty || $0.name.localizedCaseInsensitiveContains(filter)
+                }
+                if symbols.isEmpty {
+                    Text(NSLocalizedString("Geen symbolen gevonden", comment: "Lege functielijst"))
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List(symbols) { symbol in
+                        HStack(spacing: 6) {
+                            Image(systemName: symbol.kind.symbolName)
+                                .foregroundStyle(.secondary)
+                                .frame(width: 16)
+                            Text(symbol.name).lineLimit(1)
+                            Spacer()
+                            Text("\(symbol.line + 1)")
+                                .font(.caption)
+                                .foregroundStyle(.tertiary)
+                        }
+                        .padding(.leading, CGFloat(min(symbol.indentationLevel, 12)) * 4)
+                        .contentShape(Rectangle())
+                        .onTapGesture { workspace.goToLine(symbol.line) }
+                    }
+                    .listStyle(.inset)
+                }
+            } else {
+                Spacer()
+            }
+        }
+    }
+}
+
+// MARK: - Search results
+
+struct FindInFilesPanel: View {
+
+    @ObservedObject var model: FindInFilesModel
+    @ObservedObject var workspace: WorkspaceModel
+
+    private func replaceOnDisk() {
+        let openURLs = Set(workspace.documents.values.compactMap { $0.fileURL?.standardizedFileURL })
+        let summary = model.replaceAllOnDisk(skipping: openURLs)
+        workspace.alert = WorkspaceAlert(title: NSLocalizedString("Vervangen in bestanden",
+                                                                  comment: "Titel van de melding"),
+                                         message: summary)
+        model.start()
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(spacing: 6) {
+                TextField(NSLocalizedString("Zoeken in bestanden", comment: "Invoerveld"),
+                          text: $model.query.pattern)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit { model.start() }
+                HStack {
+                    Text(model.searchRoot?.lastPathComponent
+                         ?? NSLocalizedString("Geen map", comment: "Zoeken in bestanden"))
+                        .lineLimit(1)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Button(NSLocalizedString("Map…", comment: "Knop")) {
+                        let panel = NSOpenPanel()
+                        panel.canChooseDirectories = true
+                        panel.canChooseFiles = false
+                        if panel.runModal() == .OK { model.searchRoot = panel.url }
+                    }
+                }
+                HStack {
+                    TextField(NSLocalizedString("Filters, bv. *.swift", comment: "Invoerveld"),
+                              text: $model.includePatterns)
+                        .textFieldStyle(.roundedBorder)
+                    Button(model.isSearching
+                           ? NSLocalizedString("Stop", comment: "Knop")
+                           : NSLocalizedString("Zoek", comment: "Knop")) {
+                        model.isSearching ? model.cancel() : model.start()
+                    }
+                }
+                HStack(spacing: 8) {
+                    Toggle(NSLocalizedString("Aa", comment: "Hoofdlettergevoelig"),
+                           isOn: $model.query.isCaseSensitive)
+                    Toggle(NSLocalizedString(".*", comment: "Reguliere expressie"),
+                           isOn: $model.query.isRegularExpression)
+                    Spacer()
+                }
+                .toggleStyle(.checkbox)
+                .font(.caption)
+
+                HStack {
+                    TextField(NSLocalizedString("Vervangen door", comment: "Invoerveld"),
+                              text: $model.replacement)
+                        .textFieldStyle(.roundedBorder)
+                    Button(NSLocalizedString("Vervang op schijf", comment: "Knop")) {
+                        replaceOnDisk()
+                    }
+                    .disabled(model.hits.isEmpty || model.isSearching)
+                    .help(NSLocalizedString("Bestanden die in een tabblad openstaan worden overgeslagen.",
+                                            comment: "Tooltip"))
+                }
+            }
+            .padding(8)
+
+            Divider()
+
+            if !model.summaryText.isEmpty {
+                Text(model.summaryText)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+            }
+
+            List {
+                ForEach(model.hitsByFile) { group in
+                    Section(group.url.lastPathComponent) {
+                        ForEach(group.hits) { hit in
+                            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                                Text("\(hit.line + 1)")
+                                    .font(.system(size: 10, design: .monospaced))
+                                    .foregroundStyle(.tertiary)
+                                Text(hit.lineText.trimmingCharacters(in: .whitespaces))
+                                    .font(.system(size: 11, design: .monospaced))
+                                    .lineLimit(1)
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture(count: 2) { model.open(hit) }
+                            .help(group.url.path)
+                        }
+                    }
+                }
+            }
+            .listStyle(.inset)
+        }
+    }
+}
+
+// MARK: - Plugin panels
+
+/// Hosts the `NSView`s that plugins contribute, one tab per panel.
+struct PluginPanelHost: View {
+
+    @ObservedObject var environment: AppEnvironment
+    @State private var selection: String?
+
+    var body: some View {
+        let panels = environment.pluginHost.panels
+        VStack(spacing: 0) {
+            if panels.isEmpty {
+                Text(NSLocalizedString("Geen plugin-panelen actief", comment: "Leeg pluginpaneel"))
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                Picker("", selection: Binding(get: { selection ?? panels[0].identifier },
+                                              set: { selection = $0 })) {
+                    ForEach(panels, id: \.identifier) { panel in
+                        Text(panel.title).tag(panel.identifier)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .padding(6)
+                Divider()
+                if let panel = panels.first(where: { $0.identifier == (selection ?? panels[0].identifier) }) {
+                    PluginPanelContainer(descriptor: panel)
+                        .id(panel.identifier)
+                }
+            }
+        }
+    }
+}
+
+struct PluginPanelContainer: NSViewRepresentable {
+    let descriptor: PluginPanelDescriptor
+
+    func makeNSView(context: Context) -> NSView {
+        descriptor.makeView()
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+}
+
+
+// MARK: - Document map
+
+/// A miniature of the whole document: one thin bar per line, scaled to the
+/// panel. Drawn with `Canvas` from the line lengths the piece table already
+/// knows, so it costs nothing to keep up to date, and clicking scrolls there.
+struct DocumentMapPanel: View {
+
+    @ObservedObject var workspace: WorkspaceModel
+    @ObservedObject var environment: AppEnvironment
+
+    /// Beyond this, only every n-th line is drawn; a 3-million-line document
+    /// has far more lines than the panel has pixels anyway.
+    private static let maximumDrawnLines = 4_000
+
+    var body: some View {
+        if let document = workspace.activeDocument {
+            GeometryReader { geometry in
+                Canvas { context, size in
+                    draw(document: document, context: &context, size: size)
+                }
+                .contentShape(Rectangle())
+                .onTapGesture { location in
+                    let fraction = min(max(location.y / geometry.size.height, 0), 1)
+                    let line = Int(Double(document.lineIndex.lineCount - 1) * fraction)
+                    workspace.goToLine(line)
+                }
+            }
+            .background(Color(nsColor: environment.style.gutterBackgroundColor))
+        } else {
+            Text(NSLocalizedString("Geen document", comment: "Lege documentkaart"))
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    private func draw(document: EditorDocument, context: inout GraphicsContext, size: CGSize) {
+        let table = document.lineIndex
+        let lineCount = max(1, table.lineCount)
+        let step = max(1, lineCount / Self.maximumDrawnLines)
+        let rowHeight = size.height / CGFloat((lineCount + step - 1) / step)
+        let barHeight = max(1, min(rowHeight - 0.5, 2))
+        let foreground = Color(nsColor: environment.style.foregroundColor).opacity(0.55)
+        let highlight = Color(nsColor: environment.style.bookmarkColor)
+
+        var row = 0
+        var line = 0
+        while line < lineCount {
+            let content = table.lineContentRange(line)
+            let length = min(content.count, 120)
+            if length > 0 {
+                let indent = table.line(line).prefix { $0 == " " || $0 == "\t" }.count
+                let x = size.width * CGFloat(min(indent, 40)) / 120
+                let width = max(1, size.width * CGFloat(length - min(indent, length)) / 120)
+                let rect = CGRect(x: x, y: CGFloat(row) * rowHeight, width: width, height: barHeight)
+                context.fill(Path(rect),
+                             with: .color(document.document.bookmarks.contains(line) ? highlight : foreground))
+            }
+            row += 1
+            line += step
+        }
+
+        // Viewport indicator.
+        if let textView = workspace.activeTextView,
+           let scrollView = textView.enclosingScrollView,
+           textView.bounds.height > 0 {
+            let visible = scrollView.contentView.bounds
+            let top = size.height * (visible.minY / max(1, textView.bounds.height))
+            let height = size.height * (visible.height / max(1, textView.bounds.height))
+            context.fill(Path(CGRect(x: 0, y: top, width: size.width, height: max(4, height))),
+                         with: .color(Color(nsColor: environment.style.selectionColor).opacity(0.25)))
+        }
+    }
+}

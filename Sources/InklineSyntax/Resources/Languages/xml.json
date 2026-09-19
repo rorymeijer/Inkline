@@ -1,0 +1,97 @@
+{
+  "identifier": "xml",
+  "name": "XML",
+  "fileExtensions": [
+    "xml",
+    "xsd",
+    "xsl",
+    "xslt",
+    "svg",
+    "plist",
+    "storyboard",
+    "xib",
+    "csproj",
+    "pom"
+  ],
+  "firstLinePattern": "^\\s*<\\?xml",
+  "comments": {
+    "blockStart": "<!--",
+    "blockEnd": "-->"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "folding": "indentation",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "<!--[\\s\\S]*?-->",
+      "multiline": true
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "<\\?[\\s\\S]*?\\?>",
+      "multiline": true
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "<!DOCTYPE[^>]*>",
+      "caseInsensitive": true
+    },
+    {
+      "scope": "string",
+      "pattern": "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "tag",
+      "pattern": "</?([A-Za-z_][\\w:.-]*)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "tagAttribute",
+      "pattern": "\\s([A-Za-z_:][-\\w:.]*)(?=\\s*=)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "constant",
+      "pattern": "&[A-Za-z]+;|&#\\d+;"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "tag",
+      "pattern": "<([A-Za-z_][\\w:.-]*)[^>]*\\bid\\s*=\\s*[\"\\']([^\"\\']+)[\"\\']",
+      "nameGroup": 2
+    }
+  ],
+  "treeSitter": {
+    "grammar": "xml",
+    "library": "libtree-sitter-xml.dylib",
+    "highlightsQuery": "xml/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}

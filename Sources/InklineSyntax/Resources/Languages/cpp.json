@@ -1,0 +1,123 @@
+{
+  "identifier": "cpp",
+  "name": "C++",
+  "fileExtensions": [
+    "cpp",
+    "cc",
+    "cxx",
+    "hpp",
+    "hh",
+    "hxx",
+    "ipp",
+    "tpp",
+    "c++"
+  ],
+  "comments": {
+    "line": "//",
+    "blockStart": "/*",
+    "blockEnd": "*/"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 4,
+    "tabWidth": 4
+  },
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "/\\*[\\s\\S]*?\\*/",
+      "multiline": true
+    },
+    {
+      "scope": "comment",
+      "pattern": "//[^\\n]*"
+    },
+    {
+      "scope": "preprocessor",
+      "pattern": "^\\s*#\\s*\\w+"
+    },
+    {
+      "scope": "string",
+      "pattern": "(?:u8|u|U|L)?\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "character",
+      "pattern": "(?:u8|u|U|L)?'(?:[^'\\\\\\n]|\\\\.)'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b(?:0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO][0-7_]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][+-]?\\d+)?[fFlLuUdD]?)\\b"
+    },
+    {
+      "scope": "storage",
+      "pattern": "\\b(?:auto|const|extern|inline|register|restrict|static|struct|typedef|union|volatile|enum|class|constexpr|consteval|explicit|friend|mutable|namespace|operator|private|protected|public|template|typename|using|virtual|concept|requires|export|module)\\b"
+    },
+    {
+      "scope": "controlKeyword",
+      "pattern": "\\b(?:break|case|continue|default|do|else|for|goto|if|return|switch|while|catch|co_await|co_return|co_yield|throw|try)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b(?:char|double|float|int|long|short|signed|unsigned|void|size_t|ssize_t|bool|int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|FILE|string|wstring|vector|map|set|pair|shared_ptr|unique_ptr|string_view|span|optional|variant|auto)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:NULL|true|false|nullptr|this|nullptr)\\b"
+    },
+    {
+      "scope": "keyword",
+      "pattern": "\\b(?:sizeof|alignof|typeof)\\b"
+    },
+    {
+      "scope": "type",
+      "pattern": "\\b[A-Z][A-Za-z0-9_]*\\b"
+    },
+    {
+      "scope": "function",
+      "pattern": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+      "captureGroup": 1
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "function",
+      "pattern": "^[A-Za-z_][\\w :<>,\\*&~]*\\s+\\*?&?([A-Za-z_]\\w*)\\s*\\([^;]*\\)\\s*(?:const\\s*)?(?:noexcept\\s*)?\\{",
+      "nameGroup": 1
+    },
+    {
+      "kind": "class",
+      "pattern": "^\\s*(?:template\\s*<[^>]*>\\s*)?class\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "structure",
+      "pattern": "^\\s*struct\\s+([A-Za-z_]\\w*)",
+      "nameGroup": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "^\\s*namespace\\s+([A-Za-z_][\\w:]*)",
+      "nameGroup": 1
+    }
+  ],
+  "treeSitter": {
+    "grammar": "cpp",
+    "library": "libtree-sitter-cpp.dylib",
+    "highlightsQuery": "cpp/highlights.scm"
+  },
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "folding": "brackets"
+}

@@ -1,0 +1,85 @@
+{
+  "identifier": "toml",
+  "name": "TOML",
+  "fileExtensions": [
+    "toml"
+  ],
+  "fileNames": [
+    "Cargo.toml",
+    "pyproject.toml",
+    "Pipfile"
+  ],
+  "comments": {
+    "line": "#"
+  },
+  "indentation": {
+    "usesTabs": false,
+    "indentWidth": 2,
+    "tabWidth": 2
+  },
+  "indentationRules": {
+    "reindentTriggers": []
+  },
+  "folding": "none",
+  "patterns": [
+    {
+      "scope": "comment",
+      "pattern": "#[^\\n]*"
+    },
+    {
+      "scope": "heading",
+      "pattern": "^\\s*\\[\\[?[^\\]\\n]+\\]\\]?"
+    },
+    {
+      "scope": "property",
+      "pattern": "^\\s*([A-Za-z0-9_.-]+|\"[^\"]*\")\\s*(?==)",
+      "captureGroup": 1
+    },
+    {
+      "scope": "string",
+      "pattern": "\"\"\"[\\s\\S]*?\"\"\"",
+      "multiline": true
+    },
+    {
+      "scope": "string",
+      "pattern": "\"(?:[^\"\\\\\\n]|\\\\.)*\""
+    },
+    {
+      "scope": "string",
+      "pattern": "'(?:[^'\\\\\\n]|\\\\.)*'"
+    },
+    {
+      "scope": "number",
+      "pattern": "\\b\\d[\\d_]*(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\b(?:true|false)\\b"
+    },
+    {
+      "scope": "constant",
+      "pattern": "\\d{4}-\\d{2}-\\d{2}(?:[T ]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})?)?"
+    }
+  ],
+  "symbols": [
+    {
+      "kind": "section",
+      "pattern": "^\\s*\\[\\[?([^\\]\\n]+)\\]\\]?",
+      "nameGroup": 1
+    }
+  ],
+  "brackets": [
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ]
+}
