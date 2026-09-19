@@ -560,5 +560,7 @@ python3 scripts/make-app-icon.py
 - **Tree-sitter-grammatica's worden niet meegeleverd.** Zonder dylib valt elke
   taal terug op de regex-highlighter, die voor de meegeleverde talen compleet is.
 - **Codevouwen** hangt aan haakjes of inspringing, niet aan de grammatica.
+- **Tabbladen losmaken naar een eigen venster** kan nog niet. Herordenen met
+  slepen, en verplaatsen naar het andere paneel van de splitsing, kan wel.
 - De interface is Nederlandstalig; een Engelse vertaling is een kwestie van een
   tweede locale in `App/Resources/Localizable.xcstrings`.

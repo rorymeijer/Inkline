@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import UniformTypeIdentifiers
 
 /// The tab strip: reorderable, closable, with the unsaved-changes dot that
 /// turns into a close button on hover — the macOS convention.
@@ -8,6 +9,18 @@ struct TabBarView: View {
     @ObservedObject var pane: EditorPane
     @ObservedObject var workspace: WorkspaceModel
     @ObservedObject var environment: AppEnvironment
+    @State private var draggedDocumentID: UUID?
+
+    /// Moves the dragged tab in front of `target`. Returns whether the drop was
+    /// handled, which is what SwiftUI wants back.
+    private func move(_ dragged: UUID?, before target: UUID) -> Bool {
+        guard let dragged, dragged != target,
+              let from = pane.documentIDs.firstIndex(of: dragged),
+              let to = pane.documentIDs.firstIndex(of: target) else { return false }
+        workspace.moveTab(in: pane, from: IndexSet(integer: from), to: to > from ? to + 1 : to)
+        draggedDocumentID = nil
+        return true
+    }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -20,6 +33,14 @@ struct TabBarView: View {
                                     workspace.activePaneID = pane.id
                                 },
                                 onClose: { workspace.closeDocument(id: document.id) })
+                        // Slepen om tabbladen te herordenen.
+                        .onDrag {
+                            draggedDocumentID = document.id
+                            return NSItemProvider(object: document.id.uuidString as NSString)
+                        }
+                        .onDrop(of: [.text], isTargeted: nil) { _ in
+                            move(draggedDocumentID, before: document.id)
+                        }
                         .contextMenu {
                             Button(NSLocalizedString("Sluiten", comment: "Tabmenu")) {
                                 workspace.closeDocument(id: document.id)
