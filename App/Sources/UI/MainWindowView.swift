@@ -11,13 +11,20 @@ struct MainWindowView: View {
     @ObservedObject var workspace: WorkspaceModel
     @ObservedObject var environment: AppEnvironment
 
+    /// Sidebar-breedte, door de gebruiker aan te passen via de sleepbare
+    /// scheidingslijn en bewaard tussen sessies.
+    @AppStorage("sidebarWidth") private var sidebarWidth: Double = 260
+    @State private var sidebarDragStartWidth: Double?
+
+    private static let sidebarWidthRange: ClosedRange<Double> = 160...600
+
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 if workspace.isSidebarVisible {
                     SidebarView(workspace: workspace, environment: environment)
-                        .frame(minWidth: 200, idealWidth: 260, maxWidth: 420)
-                    Divider()
+                        .frame(width: Self.clampedSidebarWidth(sidebarWidth))
+                    sidebarResizeHandle
                 }
                 editorArea
             }
@@ -34,6 +41,41 @@ struct MainWindowView: View {
                   message: Text(alert.message),
                   dismissButton: .default(Text(NSLocalizedString("OK", comment: "Knop"))))
         }
+    }
+
+    /// De scheidingslijn tussen sidebar en editor, met een bredere onzichtbare
+    /// sleepzone zodat hij makkelijk te pakken is.
+    private var sidebarResizeHandle: some View {
+        Divider()
+            .overlay {
+                Color.clear
+                    .frame(width: 9)
+                    .contentShape(Rectangle())
+                    .onHover { hovering in
+                        if hovering {
+                            NSCursor.resizeLeftRight.push()
+                        } else {
+                            NSCursor.pop()
+                        }
+                    }
+                    .gesture(
+                        DragGesture(minimumDistance: 1, coordinateSpace: .global)
+                            .onChanged { value in
+                                if sidebarDragStartWidth == nil {
+                                    sidebarDragStartWidth = sidebarWidth
+                                }
+                                let start = sidebarDragStartWidth ?? sidebarWidth
+                                sidebarWidth = Self.clampedSidebarWidth(start + value.translation.width)
+                            }
+                            .onEnded { _ in
+                                sidebarDragStartWidth = nil
+                            }
+                    )
+            }
+    }
+
+    private static func clampedSidebarWidth(_ width: Double) -> Double {
+        min(sidebarWidthRange.upperBound, max(sidebarWidthRange.lowerBound, width))
     }
 
     private var editorArea: some View {
