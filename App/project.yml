@@ -49,6 +49,8 @@ targets:
     dependencies:
       - package: Inkline
         product: InklineKit
+        embed: true
+        codeSign: true
       - package: Sparkle
       - package: SwiftTreeSitter
       - target: JSONFormatterPlugin

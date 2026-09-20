@@ -278,6 +278,14 @@ xcodebuild -exportArchive \
 
 [[ -d "$APP_PATH" ]] || die "De export bevat geen $APP_PATH."
 
+# InklineKit is bewust dynamisch: de app en plug-ins moeten dezelfde runtime-
+# types delen. Een geldige code signature detecteert niet dat een gekoppeld
+# framework ontbreekt, dus controleer dit vóór notarisatie en distributie.
+readonly INKLINE_KIT_PATH="$APP_PATH/Contents/Frameworks/InklineKit.framework"
+[[ -d "$INKLINE_KIT_PATH" ]] ||
+    die "De geëxporteerde app mist InklineKit.framework en kan daardoor niet starten."
+codesign --verify --strict --verbose=2 "$INKLINE_KIT_PATH"
+
 app_version="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PATH/Contents/Info.plist")"
 app_build="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP_PATH/Contents/Info.plist")"
 [[ "$app_version" == "$VERSION" ]] ||
