@@ -13,11 +13,17 @@ final class InklineTextView: NSTextView {
     // MARK: Configuration
 
     var style: ThemeStyle = ThemeStyle(theme: .builtInLight, fontName: "SF Mono", fontSize: 13) {
-        didSet { applyStyle() }
+        didSet {
+            guard style != oldValue else { return }
+            applyStyle()
+        }
     }
 
     var settings: EditorSettings = .default {
-        didSet { applySettings() }
+        didSet {
+            guard settings != oldValue else { return }
+            applySettings()
+        }
     }
 
     var language: LanguageDefinition = .plainText
@@ -94,11 +100,17 @@ final class InklineTextView: NSTextView {
         let wraps = settings.wrapsLines
         if let container = textContainer, let scrollView = enclosingScrollView {
             container.widthTracksTextView = wraps
-            container.containerSize = NSSize(width: wraps ? scrollView.contentSize.width : .greatestFiniteMagnitude,
-                                             height: .greatestFiniteMagnitude)
+            container.containerSize = NSSize(width: wraps ? scrollView.contentSize.width : CGFloat.greatestFiniteMagnitude,
+                                             height: CGFloat.greatestFiniteMagnitude)
             isHorizontallyResizable = !wraps
-            maxSize = NSSize(width: .greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
-            if wraps { frame.size.width = scrollView.contentSize.width }
+            // A non-wrapping text view must let TextKit determine its width.
+            // Giving it a flexible width as well creates a resize feedback loop
+            // between NSLayoutManager and the enclosing NSClipView.
+            autoresizingMask = wraps ? [.width] : []
+            maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+            if wraps, frame.width != scrollView.contentSize.width {
+                frame.size.width = scrollView.contentSize.width
+            }
         }
         needsDisplay = true
     }
@@ -167,7 +179,7 @@ final class InklineTextView: NSTextView {
     private func enumerateRects(for range: NSRange,
                                 layoutManager: NSLayoutManager,
                                 container: NSTextContainer,
-                                body: (NSRect) -> Void) {
+                                body: @escaping (NSRect) -> Void) {
         let glyphRange = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
         layoutManager.enumerateEnclosingRects(forGlyphRange: glyphRange,
                                               withinSelectedGlyphRange: NSRange(location: NSNotFound, length: 0),

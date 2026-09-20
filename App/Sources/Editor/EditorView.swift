@@ -20,37 +20,44 @@ struct EditorView: NSViewRepresentable {
         Coordinator(document: document, workspace: workspace, environment: environment, paneID: paneID)
     }
 
-    func makeNSView(context: Context) -> NSScrollView {
+    func makeNSView(context: Context) -> EditorContainerView {
         let scrollView = NSScrollView()
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = true
         scrollView.autohidesScrollers = true
         scrollView.borderType = .noBorder
-        scrollView.drawsBackground = true
+        scrollView.drawsBackground = false
+        scrollView.automaticallyAdjustsContentInsets = false
+        scrollView.contentInsets = NSEdgeInsets()
 
         let layoutManager = NSLayoutManager()
-        layoutManager.allowsNonContiguousLayout = true      // the reason 100 MB files open instantly
+        // Non-contiguous TextKit 1 layout is unstable with this shared custom
+        // text storage. Attribute work is kept incremental instead.
+        layoutManager.allowsNonContiguousLayout = false
         document.textStorage.addLayoutManager(layoutManager)
 
-        let container = NSTextContainer(containerSize: NSSize(width: .greatestFiniteMagnitude,
-                                                              height: .greatestFiniteMagnitude))
+        let initialContainerWidth = environment.settings.wrapsLines
+            ? scrollView.contentSize.width
+            : CGFloat.greatestFiniteMagnitude
+        let container = NSTextContainer(containerSize: NSSize(width: initialContainerWidth,
+                                                              height: CGFloat.greatestFiniteMagnitude))
         container.widthTracksTextView = environment.settings.wrapsLines
         layoutManager.addTextContainer(container)
 
         let textView = InklineTextView(frame: .zero, textContainer: container)
-        textView.minSize = NSSize(width: 0, height: 0)
-        textView.maxSize = NSSize(width: .greatestFiniteMagnitude, height: .greatestFiniteMagnitude)
+        textView.frame = NSRect(origin: .zero, size: scrollView.contentSize)
+        textView.minSize = NSSize(width: 0, height: scrollView.contentSize.height)
+        textView.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = !environment.settings.wrapsLines
-        textView.autoresizingMask = [.width]
+        textView.autoresizingMask = environment.settings.wrapsLines ? [.width] : []
         textView.delegate = context.coordinator
-        textView.style = environment.style
+        if textView.style != environment.style {
+            textView.style = environment.style
+        }
         textView.settings = environment.settings
         textView.language = document.language
         textView.indentation = document.document.indentation
-        textView.onSelectionChange = { [weak coordinator = context.coordinator] in
-            coordinator?.selectionDidChange()
-        }
         textView.onRecordMacroAction = { action in
             environment.macroRecorder.record(action)
         }
@@ -61,13 +68,21 @@ struct EditorView: NSViewRepresentable {
 
         scrollView.documentView = textView
 
-        let ruler = LineNumberRulerView(textView: textView, style: environment.style)
+        let ruler = LineNumberRulerView(scrollView: scrollView, textView: textView, style: environment.style)
         ruler.lineNumberProvider = { [weak document] offset in document?.lineNumber(at: offset) ?? 0 }
         ruler.onToggleBookmark = { [weak document] line in document?.toggleBookmark(atLine: line) }
         ruler.onToggleFold = { [weak document] line in document?.toggleFold(atLine: line) }
-        scrollView.verticalRulerView = ruler
-        scrollView.hasVerticalRuler = true
-        scrollView.rulersVisible = environment.settings.showsLineNumbers
+        ruler.updateThickness(forLineCount: document.lineIndex.lineCount)
+        ruler.bookmarkedLines = document.document.bookmarks.lines
+        ruler.foldableLines = Set(document.foldingState.regions.map(\.startLine))
+        ruler.collapsedLines = document.foldingState.collapsedStartLines
+        ruler.showsFoldingRibbon = environment.settings.showsFoldingRibbon
+
+        // Keep the gutter outside NSScrollView's ruler machinery. A ruler view
+        // participates in the clip view's sizing and previously caused TextKit
+        // to enter a resize loop. This sibling only observes the scroll offset.
+        let containerView = EditorContainerView(scrollView: scrollView, gutter: ruler)
+        containerView.setGutterVisible(environment.settings.showsLineNumbers)
 
         context.coordinator.textView = textView
         context.coordinator.ruler = ruler
@@ -78,33 +93,43 @@ struct EditorView: NSViewRepresentable {
         // Restore the caret and scroll position from the session.
         let selection = document.selection.clamped(to: document.length)
         textView.setSelectedRange(NSRange(location: selection.range.lowerBound, length: selection.range.count))
+        textView.onSelectionChange = { [weak coordinator = context.coordinator] in
+            coordinator?.selectionDidChange()
+        }
         DispatchQueue.main.async {
             scrollView.contentView.scroll(to: NSPoint(x: 0, y: document.scrollOffset))
             scrollView.reflectScrolledClipView(scrollView.contentView)
             document.textStorage.applyHighlighting(in: textView.visibleCharacterRange())
         }
-        return scrollView
+        return containerView
     }
 
-    func updateNSView(_ scrollView: NSScrollView, context: Context) {
+    func updateNSView(_ containerView: EditorContainerView, context: Context) {
+        let scrollView = containerView.scrollView
         guard let textView = scrollView.documentView as? InklineTextView else { return }
         textView.style = environment.style
-        textView.settings = environment.settings
+        if textView.settings != environment.settings {
+            textView.settings = environment.settings
+        }
         textView.language = document.language
         textView.indentation = document.document.indentation
         textView.isOverwriteMode = document.isOverwriteMode
-        document.textStorage.style = environment.style
+        if document.textStorage.style != environment.style {
+            document.textStorage.style = environment.style
+        }
         document.textStorage.wrapsLines = environment.settings.wrapsLines
 
-        if let ruler = scrollView.verticalRulerView as? LineNumberRulerView {
+        let ruler = containerView.gutter
+        ruler.updateThickness(forLineCount: document.lineIndex.lineCount)
+        ruler.bookmarkedLines = document.document.bookmarks.lines
+        ruler.foldableLines = Set(document.foldingState.regions.map(\.startLine))
+        ruler.collapsedLines = document.foldingState.collapsedStartLines
+        ruler.showsFoldingRibbon = environment.settings.showsFoldingRibbon
+        if ruler.style != environment.style {
             ruler.style = environment.style
-            ruler.bookmarkedLines = Set(document.document.bookmarks.sorted)
-            ruler.foldableLines = Set(document.foldingState.regions.map(\.startLine))
-            ruler.collapsedLines = document.foldingState.collapsedStartLines
-            ruler.showsFoldingRibbon = environment.settings.showsFoldingRibbon
-            ruler.updateThickness(forLineCount: document.lineIndex.lineCount)
         }
-        scrollView.rulersVisible = environment.settings.showsLineNumbers
+        containerView.setGutterVisible(environment.settings.showsLineNumbers)
+
         applyFolding(to: textView, coordinator: context.coordinator)
 
         if workspace.activePane.id == paneID,
@@ -153,6 +178,7 @@ struct EditorView: NSViewRepresentable {
         private(set) var hiddenRanges: [NSRange] = []
 
         private var completionWorkItem: DispatchWorkItem?
+        private var highlightingWorkItem: DispatchWorkItem?
 
         init(document: EditorDocument, workspace: WorkspaceModel, environment: AppEnvironment, paneID: UUID) {
             self.document = document
@@ -173,8 +199,11 @@ struct EditorView: NSViewRepresentable {
 
         @objc private func boundsDidChange() {
             guard let scrollView, let textView else { return }
-            document.scrollOffset = Double(scrollView.contentView.bounds.origin.y)
-            document.textStorage.applyHighlighting(in: textView.visibleCharacterRange())
+            let offset = Double(scrollView.contentView.bounds.origin.y)
+            if document.scrollOffset != offset {
+                document.scrollOffset = offset
+            }
+            scheduleVisibleHighlighting(for: textView)
             ruler?.needsDisplay = true
 
             if workspace.synchronizedScrolling {
@@ -185,16 +214,33 @@ struct EditorView: NSViewRepresentable {
         func selectionDidChange() {
             guard let textView else { return }
             let range = textView.selectedRange()
-            document.selection = TextSelection(anchor: range.location, head: NSMaxRange(range))
-            // Keep the core buffer's idea of the selection in step; the status
-            // bar and every headless command read it from there.
-            document.document.buffer.selections = textView.selectedRanges
+            let selection = TextSelection(anchor: range.location, head: NSMaxRange(range))
+            let selections = textView.selectedRanges
                 .map(\.rangeValue)
                 .map { TextSelection(anchor: $0.location, head: NSMaxRange($0)) }
-            document.selectedRangeCount = max(1, textView.selectedRanges.count + textView.additionalCarets.count)
-            document.selectedCharacterCount = textView.selectedRanges
+            let selectedRangeCount = max(1, textView.selectedRanges.count + textView.additionalCarets.count)
+            let selectedCharacterCount = textView.selectedRanges
                 .map(\.rangeValue.length)
                 .reduce(0, +)
+
+            // AppKit may report a selection change synchronously while SwiftUI
+            // is updating this representable. Publish on the next main-actor
+            // turn so model changes never occur inside updateNSView.
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                if self.document.selection != selection {
+                    self.document.selection = selection
+                }
+                // Keep the core buffer's idea of the selection in step; the
+                // status bar and every headless command read it from there.
+                self.document.document.buffer.selections = selections
+                if self.document.selectedRangeCount != selectedRangeCount {
+                    self.document.selectedRangeCount = selectedRangeCount
+                }
+                if self.document.selectedCharacterCount != selectedCharacterCount {
+                    self.document.selectedCharacterCount = selectedCharacterCount
+                }
+            }
             ruler?.needsDisplay = true
         }
 
@@ -202,11 +248,28 @@ struct EditorView: NSViewRepresentable {
 
         func textDidChange(_ notification: Notification) {
             guard let textView else { return }
-            document.textStorage.applyHighlighting(in: textView.visibleCharacterRange())
+            scheduleVisibleHighlighting(for: textView)
             ruler?.updateThickness(forLineCount: document.lineIndex.lineCount)
+            if let containerView = ruler?.superview as? EditorContainerView {
+                containerView.refreshGutterWidth()
+            }
             ruler?.needsDisplay = true
             workspace.scheduleAutosave()
             scheduleCompletion()
+        }
+
+        /// Bounds notifications can arrive from inside TextKit's own layout
+        /// pass. Querying glyphs synchronously there recursively starts layout.
+        /// Coalescing onto the next run-loop turn avoids that re-entrancy and
+        /// also prevents a scroll gesture from scheduling hundreds of parses.
+        private func scheduleVisibleHighlighting(for textView: InklineTextView) {
+            highlightingWorkItem?.cancel()
+            let workItem = DispatchWorkItem { [weak self, weak textView] in
+                guard let self, let textView else { return }
+                self.document.textStorage.applyHighlighting(in: textView.visibleCharacterRange())
+            }
+            highlightingWorkItem = workItem
+            DispatchQueue.main.async(execute: workItem)
         }
 
         /// Opens the completion list a moment after the user stops typing a
@@ -298,6 +361,57 @@ struct EditorView: NSViewRepresentable {
                                     forGlyphRange: glyphRange)
             return glyphRange.length
         }
+    }
+}
+
+/// Hosts the gutter beside the scroll view without making it an NSRulerView.
+/// Consequently changing the gutter width never mutates the text container or
+/// the text view's frame during a TextKit layout pass.
+final class EditorContainerView: NSView {
+    let scrollView: NSScrollView
+    let gutter: LineNumberRulerView
+
+    private var isGutterVisible = true
+
+    override var intrinsicContentSize: NSSize {
+        NSSize(width: NSView.noIntrinsicMetric, height: NSView.noIntrinsicMetric)
+    }
+
+    init(scrollView: NSScrollView, gutter: LineNumberRulerView) {
+        self.scrollView = scrollView
+        self.gutter = gutter
+        super.init(frame: .zero)
+
+        addSubview(gutter)
+        addSubview(scrollView)
+        setContentHuggingPriority(.defaultLow, for: .horizontal)
+        setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        wantsLayer = true
+        layer?.masksToBounds = true
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) wordt niet gebruikt")
+    }
+
+    override func layout() {
+        super.layout()
+        let gutterWidth = isGutterVisible ? min(gutter.ruleThickness, bounds.width) : 0
+        gutter.frame = NSRect(x: 0, y: 0, width: gutterWidth, height: bounds.height)
+        scrollView.frame = NSRect(x: gutterWidth,
+                                  y: 0,
+                                  width: max(0, bounds.width - gutterWidth),
+                                  height: bounds.height)
+    }
+
+    func setGutterVisible(_ visible: Bool) {
+        isGutterVisible = visible
+        gutter.isHidden = !visible
+        needsLayout = true
+    }
+
+    func refreshGutterWidth() {
+        setGutterVisible(!gutter.isHidden)
     }
 }
 

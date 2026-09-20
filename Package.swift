@@ -16,13 +16,19 @@ let package = Package(
         .macOS(.v13)
     ],
     products: [
-        // Dynamic, so the app and the plugin bundles share one copy of these
-        // types at runtime: a plugin compiled against a *static* copy would
-        // produce a second, incompatible `InklinePlugin` protocol and every
-        // `as? InklinePlugin` cast would fail.
-        .library(name: "InklineCore", type: .dynamic, targets: ["InklineCore"]),
-        .library(name: "InklineSyntax", type: .dynamic, targets: ["InklineSyntax"]),
-        .library(name: "InklinePluginAPI", type: .dynamic, targets: ["InklinePluginAPI"])
+        // One dynamic library holding all three modules, so the app and the
+        // plugin bundles share a single copy of these types at runtime: a
+        // plugin compiled against a *static* copy would produce a second,
+        // incompatible `InklinePlugin` protocol and every `as? InklinePlugin`
+        // cast would fail. The product name deliberately differs from every
+        // target name: Xcode refuses to build a target dynamically when a
+        // same-named product exists and the target is also linked statically
+        // (as the in-package target dependencies do).
+        .library(
+            name: "InklineKit",
+            type: .dynamic,
+            targets: ["InklineCore", "InklineSyntax", "InklinePluginAPI"]
+        )
     ],
     targets: [
         .target(

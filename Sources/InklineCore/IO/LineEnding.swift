@@ -88,7 +88,9 @@ public enum LineEnding: String, CaseIterable, Codable, Sendable {
 
     /// Converts every terminator in `text` to LF — the canonical buffer form.
     public static func normalize(_ text: String) -> String {
-        guard text.contains("\r") else { return text }
+        // Via unicodeScalars: `text.contains("\r")` ziet een CR niet wanneer
+        // die met de LF erna één grafeemcluster ("\r\n") vormt.
+        guard text.unicodeScalars.contains("\r") else { return text }
         return text.replacingOccurrences(of: "\r\n", with: "\n")
                    .replacingOccurrences(of: "\r", with: "\n")
     }

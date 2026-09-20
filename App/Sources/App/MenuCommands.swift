@@ -45,7 +45,7 @@ struct InklineCommands: Commands {
         }
 
         // MARK: Edit
-        CommandGroup(after: .pasteItem) {
+        CommandGroup(after: .pasteboard) {
             Divider()
             Button(NSLocalizedString("Regel of selectie dupliceren", comment: "Menu")) {
                 workspace?.duplicateSelection()

@@ -57,7 +57,7 @@ public final class TreeSitterHighlighter: SyntaxHighlighter {
     private let parser = Parser()
     private let tsLanguage: Language
     private let query: Query?
-    private var tree: Tree?
+    private var tree: MutableTree?
     private var parsedText: String = ""
     private let lock = NSLock()
 

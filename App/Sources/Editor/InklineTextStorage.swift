@@ -17,7 +17,10 @@ final class InklineTextStorage: NSTextStorage {
 
     /// Set by the editor; used for colours, fonts and tab stops.
     var style: ThemeStyle {
-        didSet { applyBaseAttributes() }
+        didSet {
+            guard style != oldValue else { return }
+            applyBaseAttributes()
+        }
     }
 
     var coordinator: HighlightCoordinator {
@@ -66,6 +69,11 @@ final class InklineTextStorage: NSTextStorage {
     // MARK: NSTextStorage primitives
 
     override var string: String { backing.string }
+
+    // NSAttributedString's default implementation derives this through
+    // `string`, which bridges the complete NSString to Swift on every query.
+    // TextKit asks for the length extremely often during layout.
+    override var length: Int { backing.length }
 
     override func attributes(at location: Int,
                              effectiveRange range: NSRangePointer?) -> [NSAttributedString.Key: Any] {
@@ -128,6 +136,7 @@ final class InklineTextStorage: NSTextStorage {
         guard clamped.length > 0 else { return }
 
         let swiftRange = clamped.location..<(clamped.location + clamped.length)
+        guard !highlightedRanges.contains(integersIn: swiftRange) else { return }
         if let cached = coordinator.cachedTokens(in: swiftRange) {
             applyTokens(cached, in: swiftRange)
         } else {

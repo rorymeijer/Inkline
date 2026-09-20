@@ -20,18 +20,26 @@ final class UpdaterController: ObservableObject {
 
     #if canImport(Sparkle)
     private let controller: SPUStandardUpdaterController
+    private let isUpdaterConfigured: Bool
     private var cancellable: AnyCancellable?
     #endif
 
     init() {
         #if canImport(Sparkle)
-        controller = SPUStandardUpdaterController(startingUpdater: true,
+        isUpdaterConfigured = Self.shouldStartUpdater
+        controller = SPUStandardUpdaterController(startingUpdater: false,
                                                   updaterDelegate: nil,
                                                   userDriverDelegate: nil)
-        canCheckForUpdates = controller.updater.canCheckForUpdates
-        cancellable = controller.updater.publisher(for: \.canCheckForUpdates)
-            .sink { [weak self] value in self?.canCheckForUpdates = value }
-        statusDescription = Self.describe(lastCheck: controller.updater.lastUpdateCheckDate)
+        if isUpdaterConfigured {
+            controller.startUpdater()
+            canCheckForUpdates = controller.updater.canCheckForUpdates
+            cancellable = controller.updater.publisher(for: \.canCheckForUpdates)
+                .sink { [weak self] value in self?.canCheckForUpdates = value }
+            statusDescription = Self.describe(lastCheck: controller.updater.lastUpdateCheckDate)
+        } else {
+            statusDescription = NSLocalizedString("Automatische updates zijn niet geconfigureerd.",
+                                                  comment: "Updatestatus bij ontbrekende Sparkle-sleutel")
+        }
         #else
         statusDescription = NSLocalizedString("Deze build bevat geen automatische updates.",
                                               comment: "Updatestatus zonder Sparkle")
@@ -48,7 +56,9 @@ final class UpdaterController: ObservableObject {
         }
         set {
             #if canImport(Sparkle)
-            controller.updater.automaticallyChecksForUpdates = newValue
+            if isUpdaterConfigured {
+                controller.updater.automaticallyChecksForUpdates = newValue
+            }
             #endif
         }
     }
@@ -63,17 +73,37 @@ final class UpdaterController: ObservableObject {
         }
         set {
             #if canImport(Sparkle)
-            controller.updater.automaticallyDownloadsUpdates = newValue
+            if isUpdaterConfigured {
+                controller.updater.automaticallyDownloadsUpdates = newValue
+            }
             #endif
         }
     }
 
     func checkForUpdates() {
         #if canImport(Sparkle)
+        guard isUpdaterConfigured else {
+            NSSound.beep()
+            return
+        }
         controller.checkForUpdates(nil)
         statusDescription = Self.describe(lastCheck: Date())
         #else
         NSSound.beep()
+        #endif
+    }
+
+    private static var shouldStartUpdater: Bool {
+        #if DEBUG
+        // Development builds should not poll the production appcast. It may
+        // not exist until the first release has been published.
+        return false
+        #else
+        guard let encodedKey = Bundle.main.object(forInfoDictionaryKey: "SUPublicEDKey") as? String,
+              let keyData = Data(base64Encoded: encodedKey) else {
+            return false
+        }
+        return keyData.count == 32
         #endif
     }
 

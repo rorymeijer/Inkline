@@ -17,7 +17,8 @@ settings:
     DEAD_CODE_STRIPPING: YES
     ENABLE_HARDENED_RUNTIME: YES
     CODE_SIGN_STYLE: Manual
-    DEVELOPMENT_TEAM: "$(INKLINE_TEAM_ID)"
+    # Env var wint (releasescript); de default laat IDE-builds ondertekenen.
+    DEVELOPMENT_TEAM: "$(INKLINE_TEAM_ID:default=GPYS6SK835)"
     ALWAYS_SEARCH_USER_PATHS: NO
     CLANG_ENABLE_MODULES: YES
     COMBINE_HIDPI_IMAGES: YES
@@ -47,11 +48,7 @@ targets:
         name: TreeSitter
     dependencies:
       - package: Inkline
-        product: InklineCore
-      - package: Inkline
-        product: InklineSyntax
-      - package: Inkline
-        product: InklinePluginAPI
+        product: InklineKit
       - package: Sparkle
       - package: SwiftTreeSitter
       - target: JSONFormatterPlugin
@@ -88,9 +85,7 @@ targets:
       - ../Plugins/JSONFormatter/Sources
     dependencies:
       - package: Inkline
-        product: InklinePluginAPI
-      - package: Inkline
-        product: InklineCore
+        product: InklineKit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: nl.rorymeijer.inkline.plugin.jsonformatter
@@ -109,9 +104,7 @@ targets:
       - ../Plugins/HexViewer/Sources
     dependencies:
       - package: Inkline
-        product: InklinePluginAPI
-      - package: Inkline
-        product: InklineCore
+        product: InklineKit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: nl.rorymeijer.inkline.plugin.hexviewer
@@ -130,9 +123,7 @@ targets:
       - ../Plugins/ColumnTools/Sources
     dependencies:
       - package: Inkline
-        product: InklinePluginAPI
-      - package: Inkline
-        product: InklineCore
+        product: InklineKit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: nl.rorymeijer.inkline.plugin.columntools

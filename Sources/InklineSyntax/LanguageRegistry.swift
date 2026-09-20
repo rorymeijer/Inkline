@@ -146,9 +146,12 @@ public struct LanguageLoadIssue: Equatable, Sendable {
 
 extension LanguageRegistry {
     /// The registry the app uses: bundled definitions plus the user's own.
-    public static func standard(bundle: Bundle = .module,
+    /// `nil` betekent de eigen modulebundel; `.module` is internal en mag
+    /// daarom geen default argument van een publieke functie zijn.
+    public static func standard(bundle: Bundle? = nil,
                                 userDirectory: URL? = nil) -> LanguageRegistry {
         let registry = LanguageRegistry()
+        let bundle = bundle ?? .module
         if let directory = bundle.url(forResource: "Languages", withExtension: nil) {
             registry.loadDefinitions(in: directory)
         }

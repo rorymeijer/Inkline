@@ -5,7 +5,7 @@ import InklineSyntax
 /// Bridges the data-driven `Theme` to the AppKit types the views need.
 /// Everything here is derived, cached and cheap to rebuild when the theme, the
 /// font or the system appearance changes.
-struct ThemeStyle {
+struct ThemeStyle: Equatable {
 
     let theme: Theme
     let font: NSFont
@@ -14,6 +14,12 @@ struct ThemeStyle {
     let lineHeightMultiple: CGFloat
 
     private var attributesByScope: [HighlightScope: [NSAttributedString.Key: Any]]
+
+    static func == (lhs: ThemeStyle, rhs: ThemeStyle) -> Bool {
+        lhs.theme == rhs.theme
+            && lhs.font == rhs.font
+            && lhs.lineHeightMultiple == rhs.lineHeightMultiple
+    }
 
     init(theme: Theme, fontName: String, fontSize: CGFloat, lineHeightMultiple: CGFloat = 1.2) {
         self.theme = theme

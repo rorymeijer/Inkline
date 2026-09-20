@@ -1,3018 +1,3063 @@
 {
-  "sourceLanguage": "nl",
-  "version": "1.0",
-  "strings": {
-    "%d cursors": {
-      "comment": "Statusbalk: multi-cursor",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d cursors"
+  "sourceLanguage" : "nl",
+  "strings" : {
+    "" : {
+
+    },
+    "—" : {
+
+    },
+    ".*" : {
+      "comment" : "Reguliere expressie",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".*"
           }
         }
       }
     },
-    "%d stappen": {
-      "comment": "Macro-info",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d stappen"
+    "(met ⌘⌃)" : {
+      "comment" : "Toelichting bij sneltoets",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(met ⌘⌃)"
           }
         }
       }
+    },
+    "%@" : {
+
     },
-    "%d tekens, %d regels": {
-      "comment": "Statusbalk: document",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d tekens, %d regels"
+    "%@." : {
+
+    },
+    "%d cursors" : {
+      "comment" : "Statusbalk: multi-cursor",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d cursors"
           }
         }
       }
     },
-    "%d tekens, %d regels geselecteerd": {
-      "comment": "Statusbalk: selectie",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d tekens, %d regels geselecteerd"
+    "%d stappen" : {
+      "comment" : "Macro-info",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d stappen"
           }
         }
       }
     },
-    "%d treffers": {
-      "comment": "Zoekstatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d treffers"
+    "%d tekens, %d regels" : {
+      "comment" : "Statusbalk: document",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d tekens, %d regels"
           }
         }
       }
     },
-    "%d treffers in %d van %d bestanden (%.2f s)": {
-      "comment": "Samenvatting van zoeken in bestanden",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d treffers in %d van %d bestanden (%.2f s)"
+    "%d tekens, %d regels geselecteerd" : {
+      "comment" : "Statusbalk: selectie",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d tekens, %d regels geselecteerd"
           }
         }
       }
     },
-    "%d van %d": {
-      "comment": "Zoekstatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d van %d"
+    "%d treffers" : {
+      "comment" : "Zoekstatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d treffers"
           }
         }
       }
     },
-    "%d vervangingen in %d bestanden. %d open bestanden overgeslagen.": {
-      "comment": "Samenvatting na vervangen op schijf",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d vervangingen in %d bestanden. %d open bestanden overgeslagen."
+    "%d treffers in %d van %d bestanden (%.2f s)" : {
+      "comment" : "Samenvatting van zoeken in bestanden",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d treffers in %d van %d bestanden (%.2f s)"
           }
         }
       }
     },
-    "%d vervangingen in %d document(en).": {
-      "comment": "Melding na alles vervangen",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d vervangingen in %d document(en)."
+    "%d van %d" : {
+      "comment" : "Zoekstatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d van %d"
           }
         }
       }
     },
-    "%d× afspelen": {
-      "comment": "Macro herhalen",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%d× afspelen"
+    "%d vervangingen in %d bestanden. %d open bestanden overgeslagen." : {
+      "comment" : "Samenvatting na vervangen op schijf",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d vervangingen in %d bestanden. %d open bestanden overgeslagen."
           }
         }
       }
     },
-    "(met ⌘⌃)": {
-      "comment": "Toelichting bij sneltoets",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "(met ⌘⌃)"
+    "%d vervangingen in %d document(en)." : {
+      "comment" : "Melding na alles vervangen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d vervangingen in %d document(en)."
           }
         }
       }
     },
-    "+%d  −%d": {
-      "comment": "Diff-telling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%d  −%d"
+    "%d× afspelen" : {
+      "comment" : "Macro herhalen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d× afspelen"
           }
         }
       }
+    },
+    "© Rory Meijer" : {
+
     },
-    ".*": {
-      "comment": "Reguliere expressie",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ".*"
+    "+%d  −%d" : {
+      "comment" : "Diff-telling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%d  −%d"
           }
         }
       }
     },
-    "API-versie": {
-      "comment": "Plugininfo",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "API-versie"
+    "Aa" : {
+      "comment" : "Hoofdlettergevoelig",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aa"
           }
         }
       }
     },
-    "Aa": {
-      "comment": "Hoofdlettergevoelig",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aa"
+    "Aanhalingstekens automatisch sluiten" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aanhalingstekens automatisch sluiten"
           }
         }
       }
     },
-    "Aanhalingstekens automatisch sluiten": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aanhalingstekens automatisch sluiten"
+    "Afsluiten" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afsluiten"
           }
         }
       }
     },
-    "Afsluiten": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afsluiten"
+    "Afsluiten met een lege regel" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afsluiten met een lege regel"
           }
         }
       }
     },
-    "Afsluiten met een lege regel": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afsluiten met een lege regel"
+    "Afspelen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afspelen"
           }
         }
       }
     },
-    "Afspelen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afspelen"
+    "Afspelen tot einde bestand" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afspelen tot einde bestand"
           }
         }
       }
     },
-    "Afspelen tot einde bestand": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afspelen tot einde bestand"
+    "Alle bladwijzers wissen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle bladwijzers wissen"
           }
         }
       }
     },
-    "Alle bladwijzers wissen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle bladwijzers wissen"
+    "Alles bewaren" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles bewaren"
           }
         }
       }
     },
-    "Alles bewaren": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles bewaren"
+    "Alles invouwen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles invouwen"
           }
         }
       }
     },
-    "Alles invouwen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles invouwen"
+    "Alles uitvouwen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles uitvouwen"
           }
         }
       }
     },
-    "Alles uitvouwen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles uitvouwen"
+    "Alles vervangen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles vervangen"
           }
         }
       }
     },
-    "Alles vervangen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles vervangen"
+    "Als je niet bewaart, gaan de wijzigingen verloren." : {
+      "comment" : "Toelichting bij de bewaarvraag",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als je niet bewaart, gaan de wijzigingen verloren."
           }
         }
       }
     },
-    "Als je niet bewaart, gaan de wijzigingen verloren.": {
-      "comment": "Toelichting bij de bewaarvraag",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Als je niet bewaart, gaan de wijzigingen verloren."
+    "Andere sluiten" : {
+      "comment" : "Tabmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andere sluiten"
           }
         }
       }
     },
-    "Andere sluiten": {
-      "comment": "Tabmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Andere sluiten"
+    "Andere tabbladen sluiten" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andere tabbladen sluiten"
           }
         }
       }
     },
-    "Andere tabbladen sluiten": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Andere tabbladen sluiten"
+    "Annuleer" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuleer"
           }
         }
       }
     },
-    "Annuleer": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuleer"
+    "API-versie" : {
+      "comment" : "Plugininfo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API-versie"
           }
         }
       }
     },
-    "Auteur": {
-      "comment": "Plugininfo",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auteur"
+    "Auteur" : {
+      "comment" : "Plugininfo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auteur"
           }
         }
       }
     },
-    "Automatisch inspringen": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatisch inspringen"
+    "Automatisch inspringen" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch inspringen"
           }
         }
       }
     },
-    "Automatisch op updates controleren": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatisch op updates controleren"
+    "Automatisch op updates controleren" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch op updates controleren"
           }
         }
       }
     },
-    "Base64 coderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Base64 coderen"
+    "Automatische updates zijn niet geconfigureerd." : {
+      "comment" : "Updatestatus bij ontbrekende Sparkle-sleutel"
+    },
+    "Base64 coderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base64 coderen"
           }
         }
       }
     },
-    "Base64 decoderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Base64 decoderen"
+    "Base64 decoderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base64 decoderen"
           }
         }
       }
     },
-    "Begin Hoofdletters": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Begin Hoofdletters"
+    "Begin Hoofdletters" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin Hoofdletters"
           }
         }
       }
     },
-    "Beginwaarde:": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beginwaarde:"
+    "Beginwaarde:" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginwaarde:"
           }
         }
       }
     },
-    "Bestand openen…": {
-      "comment": "Knop in het lege venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bestand openen…"
+    "Bestand openen…" : {
+      "comment" : "Knop in het lege venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestand openen…"
           }
         }
       }
     },
-    "Bestanden": {
-      "comment": "Zijpaneel: bestandsverkenner",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bestanden"
+    "Bestanden" : {
+      "comment" : "Zijpaneel: bestandsverkenner",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestanden"
           }
         }
       }
+    },
+    "Bestanden die in een tabblad openstaan worden overgeslagen." : {
+      "comment" : "Tooltip"
     },
-    "Bewaren": {
-      "comment": "Instellingentab",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bewaren"
+    "Bewaren" : {
+      "comment" : "Instellingentab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewaren"
           }
         }
       }
     },
-    "Bewaren als…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bewaren als…"
+    "Bewaren als…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewaren als…"
           }
         }
       }
     },
-    "Bewerk de tekst van het actieve document.": {
-      "comment": "VoiceOver-hulp voor de teksteditor",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bewerk de tekst van het actieve document."
+    "Bewerk de tekst van het actieve document." : {
+      "comment" : "VoiceOver-hulp voor de teksteditor",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewerk de tekst van het actieve document."
           }
         }
       }
     },
-    "Bezig met zoeken…": {
-      "comment": "Status tijdens zoeken in bestanden",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bezig met zoeken…"
+    "Bezig met zoeken…" : {
+      "comment" : "Status tijdens zoeken in bestanden",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezig met zoeken…"
           }
         }
       }
     },
-    "Bijbehorend haakje markeren": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bijbehorend haakje markeren"
+    "Bijbehorend haakje markeren" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bijbehorend haakje markeren"
           }
         }
       }
     },
-    "Bladwijzer aan/uit": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bladwijzer aan/uit"
+    "Bladwijzer aan/uit" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bladwijzer aan/uit"
           }
         }
       }
     },
-    "Blokcommentaar aan/uit": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blokcommentaar aan/uit"
+    "Blokcommentaar aan/uit" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokcommentaar aan/uit"
           }
         }
       }
     },
-    "Breedte %d": {
-      "comment": "Inspringmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Breedte %d"
+    "Breedte %d" : {
+      "comment" : "Inspringmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breedte %d"
           }
         }
       }
     },
-    "Codering": {
-      "comment": "Menutitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codering"
+    "Codering" : {
+      "comment" : "Menutitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Codering"
           }
         }
       }
     },
-    "Commentaar aan/uit": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Commentaar aan/uit"
+    "Commentaar aan/uit" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentaar aan/uit"
           }
         }
       }
     },
-    "Converteren": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Converteren"
+    "Converteren" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converteren"
           }
         }
       }
     },
-    "Converteren naar": {
-      "comment": "Menukop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Converteren naar"
+    "Converteren naar" : {
+      "comment" : "Menukop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converteren naar"
           }
         }
       }
     },
-    "Deze build bevat geen automatische updates.": {
-      "comment": "Updatestatus zonder Sparkle",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deze build bevat geen automatische updates."
+    "Deze build bevat geen automatische updates." : {
+      "comment" : "Updatestatus zonder Sparkle",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deze build bevat geen automatische updates."
           }
         }
       }
     },
-    "Document naar andere paneel": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Document naar andere paneel"
+    "Document naar andere paneel" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Document naar andere paneel"
           }
         }
       }
     },
-    "Donker thema": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Donker thema"
+    "Documentkaart" : {
+      "comment" : "Zijpaneel: minikaart"
+    },
+    "Donker thema" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donker thema"
           }
         }
       }
     },
-    "Doorzoeken vanaf begin": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doorzoeken vanaf begin"
+    "Doorzoeken vanaf begin" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doorzoeken vanaf begin"
           }
         }
       }
     },
-    "Dubbele regels verwijderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dubbele regels verwijderen"
+    "Dubbele regels verwijderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dubbele regels verwijderen"
           }
         }
       }
     },
-    "Editor": {
-      "comment": "Instellingentab",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editor"
+    "Editor" : {
+      "comment" : "Instellingentab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editor"
           }
         }
       }
+    },
+    "Elke taal. Elk bestand. Meteen open." : {
+
     },
-    "Er zijn niet-bewaarde wijzigingen": {
-      "comment": "Waarschuwing bij afsluiten",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Er zijn niet-bewaarde wijzigingen"
+    "Er zijn niet-bewaarde wijzigingen" : {
+      "comment" : "Waarschuwing bij afsluiten",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er zijn niet-bewaarde wijzigingen"
           }
         }
       }
     },
-    "Escape-tekens (\\\\n, \\\\t)": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escape-tekens (\\\\n, \\\\t)"
+    "Escape-tekens (\\\\n, \\\\t)" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escape-tekens (\\\\n, \\\\t)"
           }
         }
       }
     },
-    "Filter": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filter"
+    "Escape-tekens (\\n, \\t)" : {
+      "comment" : "Tooltip"
+    },
+    "Filter" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
           }
         }
       }
     },
-    "Filters, bv. *.swift": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filters, bv. *.swift"
+    "Filters, bv. *.swift" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filters, bv. *.swift"
           }
         }
       }
     },
-    "Functielijst": {
-      "comment": "Zijpaneel: symbolen",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Functielijst"
+    "Functielijst" : {
+      "comment" : "Zijpaneel: symbolen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Functielijst"
           }
         }
       }
     },
-    "Ga": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ga"
+    "Ga" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga"
           }
         }
       }
     },
-    "Ga naar bijbehorend haakje": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ga naar bijbehorend haakje"
+    "Ga naar bijbehorend haakje" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga naar bijbehorend haakje"
           }
         }
       }
     },
-    "Ga naar regel": {
-      "comment": "Titel van het ga-naar-regel-venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ga naar regel"
+    "Ga naar regel" : {
+      "comment" : "Titel van het ga-naar-regel-venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga naar regel"
           }
         }
       }
     },
-    "Ga naar regel…": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ga naar regel…"
+    "Ga naar regel…" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ga naar regel…"
           }
         }
       }
+    },
+    "Geen document" : {
+      "comment" : "Lege documentkaart"
     },
-    "Geen map": {
-      "comment": "Zoeken in bestanden",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geen map"
+    "Geen map" : {
+      "comment" : "Zoeken in bestanden",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen map"
           }
         }
       }
     },
-    "Geen map geopend": {
-      "comment": "Lege bestandsverkenner",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geen map geopend"
+    "Geen map geopend" : {
+      "comment" : "Lege bestandsverkenner",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen map geopend"
           }
         }
       }
     },
-    "Geen plugin-panelen actief": {
-      "comment": "Leeg pluginpaneel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geen plugin-panelen actief"
+    "Geen plugin-panelen actief" : {
+      "comment" : "Leeg pluginpaneel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen plugin-panelen actief"
           }
         }
       }
     },
-    "Geen symbolen gevonden": {
-      "comment": "Lege functielijst",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geen symbolen gevonden"
+    "Geen symbolen gevonden" : {
+      "comment" : "Lege functielijst",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen symbolen gevonden"
           }
         }
       }
     },
-    "Geen treffers": {
-      "comment": "Zoekstatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geen treffers"
+    "Geen treffers" : {
+      "comment" : "Zoekstatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen treffers"
           }
         }
       }
     },
-    "Geladen": {
-      "comment": "Pluginstatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geladen"
+    "Geladen" : {
+      "comment" : "Pluginstatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geladen"
           }
         }
       }
     },
-    "Gesynchroniseerd scrollen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesynchroniseerd scrollen"
+    "Gesynchroniseerd scrollen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesynchroniseerd scrollen"
           }
         }
       }
     },
-    "Getallenreeks": {
-      "comment": "Venstertitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Getallenreeks"
+    "Getallenreeks" : {
+      "comment" : "Venstertitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getallenreeks"
           }
         }
       }
     },
-    "Getallenreeks invoegen…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Getallenreeks invoegen…"
+    "Getallenreeks invoegen…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getallenreeks invoegen…"
           }
         }
       }
     },
-    "HOOFDLETTERS": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HOOFDLETTERS"
+    "Haakjes automatisch sluiten" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haakjes automatisch sluiten"
           }
         }
       }
     },
-    "HTML coderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HTML coderen"
+    "Heel woord" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heel woord"
           }
         }
       }
     },
-    "HTML decoderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "HTML decoderen"
+    "Herinterpreteren mislukt" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herinterpreteren mislukt"
           }
         }
       }
     },
-    "Haakjes automatisch sluiten": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Haakjes automatisch sluiten"
+    "Herladen mislukt" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herladen mislukt"
           }
         }
       }
     },
-    "Heel woord": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heel woord"
+    "Hoofdlettergebruik" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoofdlettergebruik"
           }
         }
       }
     },
-    "Herinterpreteren mislukt": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Herinterpreteren mislukt"
+    "Hoofdlettergebruik omkeren" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoofdlettergebruik omkeren"
           }
         }
       }
     },
-    "Herladen mislukt": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Herladen mislukt"
+    "Hoofdlettergevoelig" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoofdlettergevoelig"
           }
         }
       }
     },
-    "Hoofdlettergebruik": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hoofdlettergebruik"
+    "Hoofdletters" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoofdletters"
           }
         }
       }
     },
-    "Hoofdlettergebruik omkeren": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hoofdlettergebruik omkeren"
+    "HOOFDLETTERS" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HOOFDLETTERS"
           }
         }
       }
     },
-    "Hoofdlettergevoelig": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hoofdlettergevoelig"
+    "HTML coderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML coderen"
           }
         }
       }
     },
-    "Hoofdletters": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hoofdletters"
+    "HTML decoderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML decoderen"
           }
         }
       }
     },
-    "Huidige regel markeren": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Huidige regel markeren"
+    "Huidige regel markeren" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huidige regel markeren"
           }
         }
       }
     },
-    "In alle tabbladen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In alle tabbladen"
+    "In alle tabbladen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In alle tabbladen"
           }
         }
       }
     },
-    "Inkline bewaart je tabbladen en herstelt ze bij de volgende start. Toch afsluiten?": {
-      "comment": "Toelichting bij afsluiten",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inkline bewaart je tabbladen en herstelt ze bij de volgende start. Toch afsluiten?"
+    "Inkline" : {
+
+    },
+    "Inkline bewaart je tabbladen en herstelt ze bij de volgende start. Toch afsluiten?" : {
+      "comment" : "Toelichting bij afsluiten",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inkline bewaart je tabbladen en herstelt ze bij de volgende start. Toch afsluiten?"
           }
         }
       }
     },
-    "Inspringbreedte: %d": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inspringbreedte: %d"
+    "Inspringbreedte: %d" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inspringbreedte: %d"
           }
         }
       }
     },
-    "Inspringen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inspringen"
+    "Inspringen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inspringen"
           }
         }
       }
     },
-    "Inspringhulplijnen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inspringhulplijnen"
+    "Inspringhulplijnen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inspringhulplijnen"
           }
         }
       }
     },
-    "Inspringhulplijnen tonen": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inspringhulplijnen tonen"
+    "Inspringhulplijnen tonen" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inspringhulplijnen tonen"
           }
         }
       }
     },
-    "Installeren…": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Installeren…"
+    "Installeren…" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installeren…"
           }
         }
       }
     },
-    "Invoegen of overschrijven": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invoegen of overschrijven"
+    "Invoegen of overschrijven" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invoegen of overschrijven"
           }
         }
       }
     },
-    "Kies bestanden of een map om te openen": {
-      "comment": "Bericht in het open-venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies bestanden of een map om te openen"
+    "Kies bestanden of een map om te openen" : {
+      "comment" : "Bericht in het open-venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies bestanden of een map om te openen"
           }
         }
       }
     },
-    "Kies een .inklineplugin-bundel": {
-      "comment": "Bericht in het open-venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies een .inklineplugin-bundel"
+    "Kies een .inklineplugin-bundel" : {
+      "comment" : "Bericht in het open-venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies een .inklineplugin-bundel"
           }
         }
       }
     },
-    "Kies een macro": {
-      "comment": "Lege macrobeheerder",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies een macro"
+    "Kies een macro" : {
+      "comment" : "Lege macrobeheerder",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies een macro"
           }
         }
       }
     },
-    "Kies een plugin": {
-      "comment": "Lege pluginbeheerder",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies een plugin"
+    "Kies een plugin" : {
+      "comment" : "Lege pluginbeheerder",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies een plugin"
           }
         }
       }
     },
-    "Kies het bestand om mee te vergelijken": {
-      "comment": "Bericht in het open-venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies het bestand om mee te vergelijken"
+    "Kies het bestand om mee te vergelijken" : {
+      "comment" : "Bericht in het open-venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies het bestand om mee te vergelijken"
           }
         }
       }
     },
-    "Kies twee bestanden om te vergelijken.": {
-      "comment": "Lege diff",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kies twee bestanden om te vergelijken."
+    "Kies twee bestanden om te vergelijken." : {
+      "comment" : "Lege diff",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies twee bestanden om te vergelijken."
           }
         }
       }
     },
-    "Kleine letters": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kleine letters"
+    "kleine letters" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kleine letters"
           }
         }
       }
     },
-    "Kolomeditor": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kolomeditor"
+    "Kleine letters" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kleine letters"
           }
         }
       }
     },
-    "Kon het bestand niet openen": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kon het bestand niet openen"
+    "Kolomeditor" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolomeditor"
           }
         }
       }
     },
-    "Kopieer pad": {
-      "comment": "Tabmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopieer pad"
+    "Kon het bestand niet openen" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kon het bestand niet openen"
           }
         }
       }
     },
-    "Laatst gecontroleerd: %@": {
-      "comment": "Updatestatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laatst gecontroleerd: %@"
+    "Kopieer pad" : {
+      "comment" : "Tabmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopieer pad"
           }
         }
       }
     },
-    "Laatste macro afspelen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laatste macro afspelen"
+    "Laatst gecontroleerd: %@" : {
+      "comment" : "Updatestatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laatst gecontroleerd: %@"
           }
         }
       }
     },
-    "Lege regels verwijderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lege regels verwijderen"
+    "Laatste macro afspelen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laatste macro afspelen"
           }
         }
       }
     },
-    "Lettergrootte: %.0f pt": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lettergrootte: %.0f pt"
+    "Lege regels verwijderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lege regels verwijderen"
           }
         }
       }
     },
-    "Lettertype kiezen…": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lettertype kiezen…"
+    "Lettergrootte: %.0f pt" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lettergrootte: %.0f pt"
           }
         }
       }
     },
-    "Licht thema": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Licht thema"
+    "Lettertype kiezen…" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lettertype kiezen…"
           }
         }
       }
     },
-    "Macro": {
-      "comment": "Menutitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macro"
+    "Licht thema" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licht thema"
           }
         }
       }
+    },
+    "Licht, snel, uitbreidbaar." : {
+
     },
-    "Macro afspelen mislukt": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macro afspelen mislukt"
+    "Macro" : {
+      "comment" : "Menutitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macro"
           }
         }
       }
     },
-    "Macro's": {
-      "comment": "Venstertitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macro's"
+    "Macro afspelen mislukt" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macro afspelen mislukt"
           }
         }
       }
     },
-    "Macro's beheren…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macro's beheren…"
+    "Macro-opname" : {
+      "comment" : "Statusbalk",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macro-opname"
           }
         }
       }
     },
-    "Macro-opname": {
-      "comment": "Statusbalk",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Macro-opname"
+    "Macro's" : {
+      "comment" : "Venstertitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macro's"
           }
         }
       }
     },
-    "Map met plugins tonen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map met plugins tonen"
+    "Macro's beheren…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macro's beheren…"
           }
         }
       }
     },
-    "Map met taaldefinities tonen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map met taaldefinities tonen"
+    "Map met plugins tonen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map met plugins tonen"
           }
         }
       }
     },
-    "Map met thema’s tonen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map met thema’s tonen"
+    "Map met taaldefinities tonen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map met taaldefinities tonen"
           }
         }
       }
     },
-    "Map openen…": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map openen…"
+    "Map met thema’s tonen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map met thema’s tonen"
           }
         }
       }
     },
-    "Map tonen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map tonen"
+    "Map openen…" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map openen…"
           }
         }
       }
     },
-    "Map…": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map…"
+    "Map tonen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map tonen"
           }
         }
       }
     },
-    "Naam": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Naam"
+    "Map…" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map…"
           }
         }
       }
     },
-    "Naam van de sessie:": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Naam van de sessie:"
+    "Naam" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naam"
           }
         }
       }
     },
-    "Negeer hoofdletters": {
-      "comment": "Diff-optie",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Negeer hoofdletters"
+    "Naam van de sessie:" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naam van de sessie:"
           }
         }
       }
     },
-    "Negeer witruimte": {
-      "comment": "Diff-optie",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Negeer witruimte"
+    "Negeer hoofdletters" : {
+      "comment" : "Diff-optie",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Negeer hoofdletters"
           }
         }
       }
     },
-    "Niet bewaren": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Niet bewaren"
+    "Negeer witruimte" : {
+      "comment" : "Diff-optie",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Negeer witruimte"
           }
         }
       }
     },
-    "Niet geladen": {
-      "comment": "Pluginstatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Niet geladen"
+    "Niet bewaren" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niet bewaren"
           }
         }
       }
     },
-    "Nieuw bestand": {
-      "comment": "Knop in het lege venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nieuw bestand"
+    "Niet geladen" : {
+      "comment" : "Pluginstatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niet geladen"
           }
         }
       }
     },
-    "Nieuw tabblad": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nieuw tabblad"
+    "Nieuw bestand" : {
+      "comment" : "Knop in het lege venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuw bestand"
           }
         }
       }
     },
-    "Nog niet gecontroleerd.": {
-      "comment": "Updatestatus",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nog niet gecontroleerd."
+    "Nieuw tabblad" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuw tabblad"
           }
         }
       }
     },
-    "Nu op updates controleren…": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nu op updates controleren…"
+    "Nog niet gecontroleerd." : {
+      "comment" : "Updatestatus",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nog niet gecontroleerd."
           }
         }
       }
     },
-    "OK": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "Nu op updates controleren…" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nu op updates controleren…"
           }
         }
       }
     },
-    "Omkeren": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Omkeren"
+    "OK" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "Openen": {
-      "comment": "Contextmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Openen"
+    "Omkeren" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omkeren"
           }
         }
       }
     },
-    "Openen…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Openen…"
+    "Openen" : {
+      "comment" : "Contextmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Openen"
           }
         }
       }
     },
-    "Opname starten": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opname starten"
+    "Openen…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Openen…"
           }
         }
       }
     },
-    "Opname stoppen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opname stoppen"
+    "Opname starten" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opname starten"
           }
         }
       }
     },
-    "Opnieuw openen met": {
-      "comment": "Menukop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opnieuw openen met"
+    "Opname stoppen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opname stoppen"
           }
         }
       }
     },
-    "Opslaan mislukt": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opslaan mislukt"
+    "Opnieuw openen met" : {
+      "comment" : "Menukop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opnieuw openen met"
           }
         }
       }
     },
-    "Over Inkline": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Over Inkline"
+    "Opslaan mislukt" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opslaan mislukt"
           }
         }
       }
     },
-    "Plugins": {
-      "comment": "Zijpaneel: pluginpanelen",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plugins"
+    "Over Inkline" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Over Inkline"
           }
         }
       }
     },
-    "Plugins beheren…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plugins beheren…"
+    "Plugins" : {
+      "comment" : "Zijpaneel: pluginpanelen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plugins"
           }
         }
       }
     },
-    "Rechten": {
-      "comment": "Plugininfo",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rechten"
+    "Plugins beheren…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plugins beheren…"
           }
         }
       }
     },
-    "Regel of selectie dupliceren": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel of selectie dupliceren"
+    "Rechten" : {
+      "comment" : "Plugininfo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechten"
           }
         }
       }
     },
-    "Regel omhoog": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel omhoog"
+    "Regel of selectie dupliceren" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel of selectie dupliceren"
           }
         }
       }
     },
-    "Regel omhoog verplaatsen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel omhoog verplaatsen"
+    "Regel omhoog" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel omhoog"
           }
         }
       }
     },
-    "Regel omlaag": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel omlaag"
+    "Regel omhoog verplaatsen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel omhoog verplaatsen"
           }
         }
       }
     },
-    "Regel omlaag verplaatsen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel omlaag verplaatsen"
+    "Regel omlaag" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel omlaag"
           }
         }
       }
     },
-    "Regel verwijderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regel verwijderen"
+    "Regel omlaag verplaatsen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel omlaag verplaatsen"
           }
         }
       }
     },
-    "Regelbewerkingen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelbewerkingen"
+    "Regel verwijderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel verwijderen"
           }
         }
       }
     },
-    "Regelcommentaar aan/uit": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelcommentaar aan/uit"
+    "Regelbewerkingen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelbewerkingen"
           }
         }
       }
     },
-    "Regeleindes": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regeleindes"
+    "Regelcommentaar aan/uit" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelcommentaar aan/uit"
           }
         }
       }
     },
-    "Regelnummer": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelnummer"
+    "Regeleindes" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeleindes"
           }
         }
       }
     },
-    "Regelnummer:": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelnummer:"
+    "Regelnummer" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelnummer"
           }
         }
       }
     },
-    "Regelnummers": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelnummers"
+    "Regelnummer:" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelnummer:"
           }
         }
       }
     },
-    "Regelnummers tonen": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelnummers tonen"
+    "Regelnummers" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelnummers"
           }
         }
       }
     },
-    "Regels afbreken": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels afbreken"
+    "Regelnummers tonen" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelnummers tonen"
           }
         }
       }
     },
-    "Regels afbreken op kolom 80": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels afbreken op kolom 80"
+    "Regels afbreken" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels afbreken"
           }
         }
       }
     },
-    "Regels samenvoegen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels samenvoegen"
+    "Regels afbreken op kolom 80" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels afbreken op kolom 80"
           }
         }
       }
     },
-    "Regels sorteren (aflopend)": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels sorteren (aflopend)"
+    "Regels samenvoegen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels samenvoegen"
           }
         }
       }
     },
-    "Regels sorteren (numeriek)": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels sorteren (numeriek)"
+    "Regels sorteren (aflopend)" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels sorteren (aflopend)"
           }
         }
       }
     },
-    "Regels sorteren (oplopend)": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regels sorteren (oplopend)"
+    "Regels sorteren (numeriek)" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels sorteren (numeriek)"
           }
         }
       }
     },
-    "Regelvolgorde omkeren": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regelvolgorde omkeren"
+    "Regels sorteren (oplopend)" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regels sorteren (oplopend)"
           }
         }
       }
     },
-    "Reguliere expressie": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reguliere expressie"
+    "Regelvolgorde omkeren" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regelvolgorde omkeren"
           }
         }
       }
     },
-    "Rg %d, Kol %d": {
-      "comment": "Statusbalk: regel en kolom",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rg %d, Kol %d"
+    "Reguliere expressie" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguliere expressie"
           }
         }
       }
     },
-    "Selecteer alle treffers": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selecteer alle treffers"
+    "Rg %d, Kol %d" : {
+      "comment" : "Statusbalk: regel en kolom",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rg %d, Kol %d"
           }
         }
       }
     },
-    "Sessie bewaren": {
-      "comment": "Venstertitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessie bewaren"
+    "Selecteer alle treffers" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer alle treffers"
           }
         }
       }
     },
-    "Sessie bewaren mislukt": {
-      "comment": "Foutmelding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessie bewaren mislukt"
+    "Sessie bewaren" : {
+      "comment" : "Venstertitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessie bewaren"
           }
         }
       }
     },
-    "Sessie bewaren…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessie bewaren…"
+    "Sessie bewaren mislukt" : {
+      "comment" : "Foutmelding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessie bewaren mislukt"
           }
         }
       }
     },
-    "Sessie herstellen bij starten": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessie herstellen bij starten"
+    "Sessie bewaren…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessie bewaren…"
           }
         }
       }
     },
-    "Sessies": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessies"
+    "Sessie herstellen bij starten" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessie herstellen bij starten"
           }
         }
       }
     },
-    "Sluiten": {
-      "comment": "Tabmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sluiten"
+    "Sessies" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessies"
           }
         }
       }
     },
-    "Sneltoets": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sneltoets"
+    "Sluiten" : {
+      "comment" : "Tabmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sluiten"
           }
         }
       }
     },
-    "Sorteren (aflopend)": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sorteren (aflopend)"
+    "Sneltoets" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sneltoets"
           }
         }
       }
     },
-    "Sorteren (numeriek)": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sorteren (numeriek)"
+    "Sorteren (aflopend)" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorteren (aflopend)"
           }
         }
       }
     },
-    "Sorteren (oplopend)": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sorteren (oplopend)"
+    "Sorteren (numeriek)" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorteren (numeriek)"
           }
         }
       }
     },
-    "Spaties %d": {
-      "comment": "Statusbalk",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spaties %d"
+    "Sorteren (oplopend)" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorteren (oplopend)"
           }
         }
       }
     },
-    "Spaties gebruiken": {
-      "comment": "Inspringmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spaties gebruiken"
+    "Spaties %d" : {
+      "comment" : "Statusbalk",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaties %d"
           }
         }
       }
     },
-    "Spaties naar tabs": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spaties naar tabs"
+    "Spaties gebruiken" : {
+      "comment" : "Inspringmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaties gebruiken"
           }
         }
       }
     },
-    "Splitsen naast elkaar": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Splitsen naast elkaar"
+    "Spaties naar tabs" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaties naar tabs"
           }
         }
       }
     },
-    "Splitsen onder elkaar": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Splitsen onder elkaar"
+    "Splitsen naast elkaar" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Splitsen naast elkaar"
           }
         }
       }
     },
-    "Splitsing opheffen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Splitsing opheffen"
+    "Splitsen onder elkaar" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Splitsen onder elkaar"
           }
         }
       }
     },
-    "Standaard regeleinde": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standaard regeleinde"
+    "Splitsing opheffen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Splitsing opheffen"
           }
         }
       }
     },
-    "Standaardcodering": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standaardcodering"
+    "Standaard regeleinde" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standaard regeleinde"
           }
         }
       }
     },
-    "Stapgrootte:": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stapgrootte:"
+    "Standaardcodering" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standaardcodering"
           }
         }
       }
     },
-    "Stappen": {
-      "comment": "Kop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stappen"
+    "Stapgrootte:" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stapgrootte:"
           }
         }
       }
     },
-    "Status": {
-      "comment": "Plugininfo",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status"
+    "Stappen" : {
+      "comment" : "Kop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stappen"
           }
         }
       }
     },
-    "Stop": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stop"
+    "Status" : {
+      "comment" : "Plugininfo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
           }
         }
       }
     },
-    "Systeemuiterlijk volgen": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Systeemuiterlijk volgen"
+    "Stop" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
           }
         }
       }
     },
-    "Taal": {
-      "comment": "Menutitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Taal"
+    "Systeemuiterlijk volgen" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeemuiterlijk volgen"
           }
         }
       }
     },
-    "Taal voor syntaxkleuring": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Taal voor syntaxkleuring"
+    "Taal" : {
+      "comment" : "Menutitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taal"
           }
         }
       }
     },
-    "Tabblad sluiten": {
-      "comment": "VoiceOver",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabblad sluiten"
+    "Taal voor syntaxkleuring" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taal voor syntaxkleuring"
           }
         }
       }
     },
-    "Tabs %d": {
-      "comment": "Statusbalk",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabs %d"
+    "Tabblad sluiten" : {
+      "comment" : "VoiceOver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabblad sluiten"
           }
         }
       }
     },
-    "Tabs gebruiken": {
-      "comment": "Inspringmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabs gebruiken"
+    "Tabs %d" : {
+      "comment" : "Statusbalk",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabs %d"
           }
         }
       }
     },
-    "Tabs gebruiken in plaats van spaties": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabs gebruiken in plaats van spaties"
+    "Tabs gebruiken" : {
+      "comment" : "Inspringmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabs gebruiken"
           }
         }
       }
     },
-    "Tabs naar spaties": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tabs naar spaties"
+    "Tabs gebruiken in plaats van spaties" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabs gebruiken in plaats van spaties"
           }
         }
       }
     },
-    "Tekencodering": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekencodering"
+    "Tabs naar spaties" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabs naar spaties"
           }
         }
       }
     },
-    "Tekst invoegen…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst invoegen…"
+    "Tekencodering" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekencodering"
           }
         }
       }
     },
-    "Tekst om in te voegen:": {
-      "comment": "Label",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekst om in te voegen:"
+    "Tekst invoegen…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekst invoegen…"
           }
         }
       }
     },
-    "Teksteditor": {
-      "comment": "VoiceOver-label van het tekstveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Teksteditor"
+    "Tekst om in te voegen:" : {
+      "comment" : "Label",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekst om in te voegen:"
           }
         }
       }
     },
-    "Terug naar bewaarde versie": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terug naar bewaarde versie"
+    "Teksteditor" : {
+      "comment" : "VoiceOver-label van het tekstveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teksteditor"
           }
         }
       }
     },
-    "Toon in Finder": {
-      "comment": "Contextmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Toon in Finder"
+    "Terug naar bewaarde versie" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terug naar bewaarde versie"
           }
         }
       }
     },
-    "Toon ondersteuningsmap": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Toon ondersteuningsmap"
+    "Toon in Finder" : {
+      "comment" : "Contextmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon in Finder"
           }
         }
       }
     },
-    "Tot einde bestand": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tot einde bestand"
+    "Toon ondersteuningsmap" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon ondersteuningsmap"
           }
         }
       }
     },
-    "URL coderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "URL coderen"
+    "Tot einde bestand" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tot einde bestand"
           }
         }
       }
     },
-    "URL decoderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "URL decoderen"
+    "Uitspringen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uitspringen"
           }
         }
       }
     },
-    "Uitspringen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uitspringen"
+    "Updates" : {
+      "comment" : "Instellingentab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updates"
           }
         }
       }
     },
-    "Updates": {
-      "comment": "Instellingentab",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Updates"
+    "Updates automatisch downloaden" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updates automatisch downloaden"
           }
         }
       }
     },
-    "Updates automatisch downloaden": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Updates automatisch downloaden"
+    "URL coderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL coderen"
           }
         }
       }
     },
-    "Vergelijken": {
-      "comment": "Venstertitel",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vergelijken"
+    "URL decoderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL decoderen"
           }
         }
       }
     },
-    "Vergelijken met bestand…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vergelijken met bestand…"
+    "Vergelijken" : {
+      "comment" : "Venstertitel",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergelijken"
           }
         }
       }
     },
-    "Vergroten": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vergroten"
+    "Vergelijken met bestand…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergelijken met bestand…"
           }
         }
       }
     },
-    "Verkleinen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verkleinen"
+    "Vergroten" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergroten"
           }
         }
       }
     },
-    "Vernieuwen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vernieuwen"
+    "Verkleinen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verkleinen"
           }
         }
       }
     },
-    "Versie": {
-      "comment": "Plugininfo",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Versie"
+    "Vernieuwen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vernieuwen"
           }
         }
       }
     },
-    "Versie %@": {
-      "comment": "Over-venster",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Versie %@"
+    "Versie" : {
+      "comment" : "Plugininfo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versie"
           }
         }
       }
     },
-    "Vervang": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vervang"
+    "Versie %@" : {
+      "comment" : "Over-venster",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versie %@"
           }
         }
       }
     },
-    "Vervangen": {
-      "comment": "Titel van de melding",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vervangen"
+    "Vervang" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vervang"
           }
         }
       }
     },
-    "Vervangen door": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vervangen door"
+    "Vervang op schijf" : {
+      "comment" : "Knop"
+    },
+    "Vervangen" : {
+      "comment" : "Titel van de melding",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vervangen"
           }
         }
       }
     },
-    "Verwijder uit zijbalk": {
-      "comment": "Contextmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verwijder uit zijbalk"
+    "Vervangen door" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vervangen door"
           }
         }
       }
+    },
+    "Vervangen in bestanden" : {
+      "comment" : "Titel van de melding"
     },
-    "Verwijderen": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verwijderen"
+    "Verwijder uit zijbalk" : {
+      "comment" : "Contextmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwijder uit zijbalk"
           }
         }
       }
     },
-    "Volgende": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgende"
+    "Verwijderen" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwijderen"
           }
         }
       }
     },
-    "Volgende bladwijzer": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgende bladwijzer"
+    "Volgende" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende"
           }
         }
       }
     },
-    "Volgende treffer": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgende treffer"
+    "Volgende bladwijzer" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende bladwijzer"
           }
         }
       }
     },
-    "Volgende zoeken": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgende zoeken"
+    "Volgende treffer" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende treffer"
           }
         }
       }
     },
-    "Volgorde omkeren": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volgorde omkeren"
+    "Volgende zoeken" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende zoeken"
           }
         }
       }
     },
-    "Vorige": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorige"
+    "Volgorde omkeren" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgorde omkeren"
           }
         }
       }
     },
-    "Vorige bladwijzer": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorige bladwijzer"
+    "Vorige" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorige"
           }
         }
       }
     },
-    "Vorige treffer": {
-      "comment": "Tooltip",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorige treffer"
+    "Vorige bladwijzer" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorige bladwijzer"
           }
         }
       }
     },
-    "Vorige zoeken": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorige zoeken"
+    "Vorige treffer" : {
+      "comment" : "Tooltip",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorige treffer"
           }
         }
       }
     },
-    "Vouwbalk tonen": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vouwbalk tonen"
+    "Vorige zoeken" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorige zoeken"
           }
         }
       }
     },
-    "Weergave": {
-      "comment": "Instellingentab",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weergave"
+    "Vouwbalk tonen" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vouwbalk tonen"
           }
         }
       }
     },
-    "Werkelijke grootte": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Werkelijke grootte"
+    "Weergave" : {
+      "comment" : "Instellingentab",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weergave"
           }
         }
       }
     },
-    "Wil je de wijzigingen in “%@” bewaren?": {
-      "comment": "Vraag bij sluiten van een gewijzigd document",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wil je de wijzigingen in “%@” bewaren?"
+    "Werkelijke grootte" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werkelijke grootte"
           }
         }
       }
     },
-    "Witruimte aan regeleinden verwijderen": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Witruimte aan regeleinden verwijderen"
+    "Wil je de wijzigingen in “%@” bewaren?" : {
+      "comment" : "Vraag bij sluiten van een gewijzigd document",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wil je de wijzigingen in “%@” bewaren?"
           }
         }
       }
     },
-    "Witruimte aan regeleinden verwijderen bij bewaren": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Witruimte aan regeleinden verwijderen bij bewaren"
+    "Witruimte aan regeleinden verwijderen" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Witruimte aan regeleinden verwijderen"
           }
         }
       }
     },
-    "Woordaanvulling": {
-      "comment": "Instelling",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Woordaanvulling"
+    "Witruimte aan regeleinden verwijderen bij bewaren" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Witruimte aan regeleinden verwijderen bij bewaren"
           }
         }
       }
     },
-    "Zijbalk tonen/verbergen": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zijbalk tonen/verbergen"
+    "Woordaanvulling" : {
+      "comment" : "Instelling",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woordaanvulling"
           }
         }
       }
     },
-    "Zinshoofdletters": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zinshoofdletters"
+    "Zijbalk tonen/verbergen" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zijbalk tonen/verbergen"
           }
         }
       }
     },
-    "Zoek": {
-      "comment": "Knop",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoek"
+    "Zinshoofdletters" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zinshoofdletters"
           }
         }
       }
     },
-    "Zoek in deze map…": {
-      "comment": "Contextmenu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoek in deze map…"
+    "Zoek" : {
+      "comment" : "Knop",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoek"
           }
         }
       }
     },
-    "Zoek naar selectie": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoek naar selectie"
+    "Zoek in deze map…" : {
+      "comment" : "Contextmenu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoek in deze map…"
           }
         }
       }
     },
-    "Zoekbalk sluiten": {
-      "comment": "VoiceOver",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoekbalk sluiten"
+    "Zoek naar selectie" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoek naar selectie"
           }
         }
       }
     },
-    "Zoeken": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken"
+    "Zoekbalk sluiten" : {
+      "comment" : "VoiceOver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoekbalk sluiten"
           }
         }
       }
     },
-    "Zoeken en vervangen…": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken en vervangen…"
+    "Zoeken" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken"
           }
         }
       }
     },
-    "Zoeken in bestanden": {
-      "comment": "Invoerveld",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken in bestanden"
+    "Zoeken en vervangen…" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken en vervangen…"
           }
         }
       }
     },
-    "Zoeken in bestanden…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken in bestanden…"
+    "Zoeken in bestanden" : {
+      "comment" : "Invoerveld",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken in bestanden"
           }
         }
       }
     },
-    "Zoeken naar updates…": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken naar updates…"
+    "Zoeken in bestanden…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken in bestanden…"
           }
         }
       }
     },
-    "Zoeken…": {
-      "comment": "Commando",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoeken…"
+    "Zoeken naar updates…" : {
+      "comment" : "Menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken naar updates…"
           }
         }
       }
     },
-    "Zoekresultaten": {
-      "comment": "Zijpaneel: zoekresultaten",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zoekresultaten"
+    "Zoeken…" : {
+      "comment" : "Commando",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoeken…"
           }
         }
       }
     },
-    "kleine letters": {
-      "comment": "Menu",
-      "extractionState": "manual",
-      "localizations": {
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kleine letters"
+    "Zoekresultaten" : {
+      "comment" : "Zijpaneel: zoekresultaten",
+      "extractionState" : "manual",
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoekresultaten"
           }
         }
       }
     }
-  }
+  },
+  "version" : "1.0"
 }

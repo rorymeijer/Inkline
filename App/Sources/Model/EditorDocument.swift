@@ -177,6 +177,15 @@ final class EditorDocument: ObservableObject, Identifiable {
 
     func updateStyle(_ style: ThemeStyle) {
         textStorage.style = style
+        // Ook de levende views bijwerken: de SwiftUI-updateketen is hier niet
+        // betrouwbaar genoeg voor (een themawissel verandert het font niet en
+        // triggerde updateNSView niet), waardoor tekst onzichtbaar kon worden.
+        if let textView {
+            textView.style = style
+            if let ruler = textView.enclosingScrollView?.verticalRulerView as? LineNumberRulerView {
+                ruler.style = style
+            }
+        }
     }
 
     func updateSettings(_ settings: EditorSettings) {

@@ -42,7 +42,7 @@ final class AppEnvironment: ObservableObject {
 
     // MARK: Directories
 
-    static func applicationSupportDirectory() -> URL {
+    nonisolated static func applicationSupportDirectory() -> URL {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support")
         let url = base.appendingPathComponent("Inkline", isDirectory: true)
@@ -82,7 +82,7 @@ final class AppEnvironment: ObservableObject {
         let systemIsDark = NSApp?.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua]) == .darkAqua
         let appearance: Theme.Appearance = settings.followsSystemAppearance
             ? (systemIsDark ? .dark : .light)
-            : .light
+            : (settings.prefersDarkAppearance ? .dark : .light)
         self.appearance = appearance
         let theme = themeRegistry.theme(withIdentifier: appearance == .dark ? settings.darkThemeIdentifier
                                                                             : settings.lightThemeIdentifier,
@@ -148,6 +148,7 @@ final class AppEnvironment: ObservableObject {
             settings.lightThemeIdentifier = identifier
         }
         settings.followsSystemAppearance = false
+        settings.prefersDarkAppearance = theme.appearance == .dark
         appearance = theme.appearance
         settingsStore.settings = settings
     }

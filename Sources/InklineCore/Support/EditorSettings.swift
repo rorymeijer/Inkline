@@ -48,6 +48,9 @@ public struct EditorSettings: Codable, Equatable, Sendable {
     public var lightThemeIdentifier: String
     public var darkThemeIdentifier: String
     public var followsSystemAppearance: Bool
+    /// De handmatig gekozen weergave wanneer `followsSystemAppearance` uit
+    /// staat; anders start de app na een herstart altijd weer licht.
+    public var prefersDarkAppearance: Bool
 
     // Updates (Sparkle)
     public var checksForUpdatesAutomatically: Bool
@@ -83,6 +86,7 @@ public struct EditorSettings: Codable, Equatable, Sendable {
                 lightThemeIdentifier: String = "inkline-light",
                 darkThemeIdentifier: String = "inkline-dark",
                 followsSystemAppearance: Bool = true,
+                prefersDarkAppearance: Bool = false,
                 checksForUpdatesAutomatically: Bool = true,
                 downloadsUpdatesAutomatically: Bool = false) {
         self.fontName = fontName
@@ -115,6 +119,7 @@ public struct EditorSettings: Codable, Equatable, Sendable {
         self.lightThemeIdentifier = lightThemeIdentifier
         self.darkThemeIdentifier = darkThemeIdentifier
         self.followsSystemAppearance = followsSystemAppearance
+        self.prefersDarkAppearance = prefersDarkAppearance
         self.checksForUpdatesAutomatically = checksForUpdatesAutomatically
         self.downloadsUpdatesAutomatically = downloadsUpdatesAutomatically
     }
@@ -159,6 +164,7 @@ public struct EditorSettings: Codable, Equatable, Sendable {
         lightThemeIdentifier = value(.lightThemeIdentifier, fallback.lightThemeIdentifier)
         darkThemeIdentifier = value(.darkThemeIdentifier, fallback.darkThemeIdentifier)
         followsSystemAppearance = value(.followsSystemAppearance, fallback.followsSystemAppearance)
+        prefersDarkAppearance = value(.prefersDarkAppearance, fallback.prefersDarkAppearance)
         checksForUpdatesAutomatically = value(.checksForUpdatesAutomatically, fallback.checksForUpdatesAutomatically)
         downloadsUpdatesAutomatically = value(.downloadsUpdatesAutomatically, fallback.downloadsUpdatesAutomatically)
     }

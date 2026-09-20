@@ -52,8 +52,11 @@ public final class ThemeRegistry {
             ?? (appearance == .dark ? Theme.builtInDark : Theme.builtInLight)
     }
 
-    public static func standard(bundle: Bundle = .module, userDirectory: URL? = nil) -> ThemeRegistry {
+    /// `nil` betekent de eigen modulebundel; `.module` is internal en mag
+    /// daarom geen default argument van een publieke functie zijn.
+    public static func standard(bundle: Bundle? = nil, userDirectory: URL? = nil) -> ThemeRegistry {
         let registry = ThemeRegistry(themes: [.builtInLight, .builtInDark])
+        let bundle = bundle ?? .module
         if let directory = bundle.url(forResource: "Themes", withExtension: nil) {
             registry.loadThemes(in: directory)
         }

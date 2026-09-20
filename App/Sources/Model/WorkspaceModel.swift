@@ -101,6 +101,20 @@ final class WorkspaceModel: ObservableObject {
             self?.visibleSidebarPanel = .plugins
             self?.isSidebarVisible = true
         }
+
+        // Stijl rechtstreeks naar de open documenten duwen: de SwiftUI-keten
+        // (updateNSView) bleek een themawissel niet betrouwbaar door te geven.
+        // Synchroon is veilig; updateStyle raakt alleen tekststorage en views,
+        // geen publishers.
+        environment.$style
+            .dropFirst()
+            .sink { [weak self] style in
+                guard let self else { return }
+                for document in self.documents.values {
+                    document.updateStyle(style)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     // MARK: Access
@@ -129,8 +143,8 @@ final class WorkspaceModel: ObservableObject {
     @discardableResult
     func newDocument() -> EditorDocument {
         untitledCounter += 1
-        let document = TextDocument(untitledNumber: untitledCounter,
-                                    indentation: environment.settings.indentation)
+        let document = TextDocument(indentation: environment.settings.indentation,
+                                    untitledNumber: untitledCounter)
         return addDocument(document)
     }
 

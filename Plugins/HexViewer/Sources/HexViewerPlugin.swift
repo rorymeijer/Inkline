@@ -108,8 +108,8 @@ final class HexPanelView: NSView {
         textView.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
         textView.isHorizontallyResizable = true
         textView.textContainer?.widthTracksTextView = false
-        textView.textContainer?.containerSize = NSSize(width: .greatestFiniteMagnitude,
-                                                       height: .greatestFiniteMagnitude)
+        textView.textContainer?.containerSize = NSSize(width: CGFloat.greatestFiniteMagnitude,
+                                                       height: CGFloat.greatestFiniteMagnitude)
         scrollView.documentView = textView
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = true

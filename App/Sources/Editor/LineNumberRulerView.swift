@@ -6,17 +6,31 @@ import InklineCore
 /// Drawn by hand rather than with a stack of views, because a 3-million-line
 /// document must not cost three million views. Only the visible glyph range is
 /// ever touched.
-final class LineNumberRulerView: NSRulerView {
+final class LineNumberRulerView: NSView {
 
+    override var isFlipped: Bool { true }
+
+    weak var scrollView: NSScrollView?
     weak var textView: NSTextView?
-    var style: ThemeStyle { didSet { needsDisplay = true } }
+    var style: ThemeStyle {
+        didSet { if style != oldValue { needsDisplay = true } }
+    }
+    private(set) var ruleThickness: CGFloat = 48
 
     /// Line numbers (zero-based) that carry a bookmark.
-    var bookmarkedLines: Set<Int> = [] { didSet { needsDisplay = true } }
+    var bookmarkedLines: Set<Int> = [] {
+        didSet { if bookmarkedLines != oldValue { needsDisplay = true } }
+    }
     /// Lines that start a foldable region, and which of them are collapsed.
-    var foldableLines: Set<Int> = [] { didSet { needsDisplay = true } }
-    var collapsedLines: Set<Int> = [] { didSet { needsDisplay = true } }
-    var showsFoldingRibbon = true { didSet { needsDisplay = true } }
+    var foldableLines: Set<Int> = [] {
+        didSet { if foldableLines != oldValue { needsDisplay = true } }
+    }
+    var collapsedLines: Set<Int> = [] {
+        didSet { if collapsedLines != oldValue { needsDisplay = true } }
+    }
+    var showsFoldingRibbon = true {
+        didSet { if showsFoldingRibbon != oldValue { needsDisplay = true } }
+    }
 
     var onToggleFold: ((Int) -> Void)?
     var onToggleBookmark: ((Int) -> Void)?
@@ -27,13 +41,13 @@ final class LineNumberRulerView: NSRulerView {
 
     private let horizontalPadding: CGFloat = 6
     private let foldRibbonWidth: CGFloat = 14
+    private var lineCount = 1
 
-    init(textView: NSTextView, style: ThemeStyle) {
+    init(scrollView: NSScrollView, textView: NSTextView, style: ThemeStyle) {
+        self.scrollView = scrollView
         self.textView = textView
         self.style = style
-        super.init(scrollView: textView.enclosingScrollView, orientation: .verticalRuler)
-        clientView = textView
-        ruleThickness = 48
+        super.init(frame: NSRect(x: 0, y: 0, width: 48, height: 0))
     }
 
     required init(coder: NSCoder) {
@@ -44,12 +58,14 @@ final class LineNumberRulerView: NSRulerView {
 
     /// Grows the gutter with the line count so five-digit line numbers fit.
     func updateThickness(forLineCount lineCount: Int) {
+        self.lineCount = max(1, lineCount)
         let digits = max(2, String(max(1, lineCount)).count)
         let sample = String(repeating: "8", count: digits)
         let width = sample.size(withAttributes: [.font: numberFont]).width
         let total = width + horizontalPadding * 2 + (showsFoldingRibbon ? foldRibbonWidth : 0)
         if abs(total - ruleThickness) > 0.5 {
             ruleThickness = ceil(total)
+            superview?.needsLayout = true
         }
     }
 
@@ -59,49 +75,41 @@ final class LineNumberRulerView: NSRulerView {
 
     // MARK: Drawing
 
-    override func drawHashMarksAndLabels(in rect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         guard let textView,
               let layoutManager = textView.layoutManager,
-              let container = textView.textContainer else { return }
+              let textContainer = textView.textContainer else { return }
 
         style.gutterBackgroundColor.setFill()
-        rect.fill()
+        dirtyRect.fill()
 
-        let text = textView.string as NSString
         let visibleRect = textView.enclosingScrollView?.contentView.bounds ?? .zero
-        let glyphRange = layoutManager.glyphRange(forBoundingRect: visibleRect, in: container)
-        let characterRange = layoutManager.characterRange(forGlyphRange: glyphRange, actualGlyphRange: nil)
+        let inset = textView.textContainerInset
+        let caretLine = lineNumberProvider?(textView.selectedRange().location) ?? 0
 
-        let insetY = textView.textContainerInset.height
-        let selectedRange = textView.selectedRange()
-        let caretLine = text.length > 0 ? lineNumber(at: min(selectedRange.location, text.length), in: text) : 0
-
-        var lineIndex = lineNumber(at: characterRange.location, in: text)
-        var characterIndex = characterRange.location
-
-        while characterIndex <= NSMaxRange(characterRange) && characterIndex <= text.length {
-            let lineRange = text.lineRange(for: NSRange(location: min(characterIndex, max(0, text.length - 1)),
-                                                        length: 0))
-            let fragmentRect = layoutManager.boundingRect(forGlyphRange: NSRange(location: lineRange.location, length: 0),
-                                                          in: container)
-            let y = fragmentRect.minY + insetY - visibleRect.minY
-
+        let containerRect = visibleRect.offsetBy(dx: -inset.width, dy: -inset.height)
+        let glyphRange = layoutManager.glyphRange(forBoundingRect: containerRect, in: textContainer)
+        var drawnLines = Set<Int>()
+        layoutManager.enumerateLineFragments(forGlyphRange: glyphRange) { [weak self] _, usedRect, _, fragmentGlyphRange, _ in
+            guard let self else { return }
+            let characterRange = layoutManager.characterRange(forGlyphRange: fragmentGlyphRange,
+                                                               actualGlyphRange: nil)
+            let lineIndex = self.lineNumberProvider?(characterRange.location) ?? 0
+            // A wrapped logical line has multiple visual fragments, but its
+            // number belongs beside the first fragment only.
+            guard drawnLines.insert(lineIndex).inserted else { return }
+            let y = usedRect.minY + inset.height - visibleRect.minY
             drawNumber(lineIndex + 1,
                        at: y,
-                       height: fragmentRect.height,
+                       height: usedRect.height,
                        isCurrent: lineIndex == caretLine)
             if bookmarkedLines.contains(lineIndex) {
-                drawBookmark(at: y, height: fragmentRect.height)
+                drawBookmark(at: y, height: usedRect.height)
             }
             if showsFoldingRibbon, foldableLines.contains(lineIndex) {
-                drawFoldArrow(at: y, height: fragmentRect.height, collapsed: collapsedLines.contains(lineIndex))
+                drawFoldArrow(at: y, height: usedRect.height, collapsed: collapsedLines.contains(lineIndex))
             }
-
-            lineIndex += 1
-            let next = NSMaxRange(lineRange)
-            if next <= characterIndex { break }
-            characterIndex = next
-            if characterIndex >= text.length { break }
         }
     }
 
@@ -147,7 +155,10 @@ final class LineNumberRulerView: NSRulerView {
     override func mouseDown(with event: NSEvent) {
         guard let textView else { return super.mouseDown(with: event) }
         let point = convert(event.locationInWindow, from: nil)
-        guard let line = lineNumber(atPoint: point, in: textView) else { return }
+        let textPoint = textView.convert(event.locationInWindow, from: nil)
+        let characterIndex = textView.characterIndexForInsertion(at: textPoint)
+        let line = lineNumberProvider?(characterIndex) ?? 0
+        guard line >= 0, line < lineCount else { return }
 
         let inFoldRibbon = point.x > ruleThickness - foldRibbonWidth
         if inFoldRibbon, showsFoldingRibbon, foldableLines.contains(line) {
@@ -155,15 +166,6 @@ final class LineNumberRulerView: NSRulerView {
         } else {
             onToggleBookmark?(line)
         }
-    }
-
-    private func lineNumber(atPoint point: NSPoint, in textView: NSTextView) -> Int? {
-        guard let layoutManager = textView.layoutManager, let container = textView.textContainer else { return nil }
-        let visibleRect = textView.enclosingScrollView?.contentView.bounds ?? .zero
-        let textPoint = NSPoint(x: 0, y: point.y + visibleRect.minY - textView.textContainerInset.height)
-        let glyphIndex = layoutManager.glyphIndex(for: textPoint, in: container)
-        let characterIndex = layoutManager.characterIndexForGlyph(at: glyphIndex)
-        return lineNumber(at: characterIndex, in: textView.string as NSString)
     }
 
     private func lineNumber(at characterIndex: Int, in text: NSString) -> Int {
